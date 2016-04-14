@@ -1,0 +1,38 @@
+= Ops Manager & Bosh hands-on demo script
+
+== Script 
+
+=== __1st Exercise:__
+  
+* Login to a Pivotal CF 1.3 microbosh using bosh CLI. In this example, cfdemo6 will be used
+* Show releases, deployments, stemcells, recent tasks.
+* Install RabbitMQ 1.3rc using Ops Manager(which is a problematic release)
+* Remove RabbitMQ using Ops Manager. It will fail undeploying (although the bosh deploy worked, some jobs never started properly), but Ops Manager will remove the tile (explain it's an issue being addressed by Reider's team)
+* As per the Ops Manager UI it was removed, try reinstalling the service. It will tell IPs are being used (it was never removed and it's still using those IPs)
+* Come back to bosh and check the deployment is still there --> BOSH and Ops Manager are out of sync. 
+* SSH to the VMs and see running processes. Check monit logs and rabbit logs. Try to understand what’s wrong
+* Manually delete deployment on bosh (don’t use —force).  After getting stuck, cancel the task. 
+* See VMs on BOSH... you'll notice some VMs on the Rabbit release are on status "failing".
+* Remove the deployment on BOSH using --force
+* Now Ops Manager and Bosh are back to sync.
+* Get to vSphere, kill a VM and tail the Health Monitor logs to see the resurrector bring it back to live.
+* Do the same with a process and see monit bringing it back.
+* Download the manifest for the releases deployed and explore that 
+* Done.
+
+=== __2nd Exercise:__
+
+* Disable resurrector plugin for Pivotal CF
+* In vSphere, power off (or kill) one of the VMs (__any vm except microbosh__)
+* Try uninstall anything and see Ops Manager failing
+* At this point, the uninstall fails but the tile is removed from Ops Manager. Login to BOSH CLI and remove the deployment manually. Update: as the latest 1.3.3 release, Ops Manager now handles this gracefully (won't be unsync with BOSH).
+* Check the manifest files and health manager logs
+* Redeploy the failed VM using bosh cck
+* Enable resurrector
+* In vSphere, power off(or kill) the VM 
+* Monitor the Health Manager logs and see resurrector redeploying the VM
+* Re-do the deployment, this time working sucessfully
+* Done.
+
+Update: as the latest 1.3.3 version of Ops Manager the 1st exercise is not possible anymore.. so please don't update the demo environment with the latest release for now. A new lab will be designed as the product becomes dificult to break :)
+https://gopivotal-com.socialcast.com/messages/22320631
