@@ -1,0 +1,2 @@
+Lab02: Building your first Bosh Release
+(this is where Fred's content goes)
