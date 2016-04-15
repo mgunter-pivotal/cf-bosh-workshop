@@ -395,6 +395,8 @@ $ bosh deploy
 
 Troubleshoot any issues until you have your first custom bosh release deployment!! (there are some corrections to be done!) The troubleshooting part is very important!! That's how you learn!!
 
+----
+bosh ssh into the postgres VM and run  "./psql -d postgres -U vcap" from /var/vcap/packages/postgresql/bin
 Hints: 
 
 - The failing canary will be kept by bosh for troubleshooting purposes
