@@ -1,5 +1,8 @@
 
-Lifecycle Commands for Bosh-Lite
+* Lifecycle Commands for Bosh-Lite
+----
+vagrant up
+----
 
 Configuration Commands
 
