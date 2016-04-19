@@ -1,10 +1,32 @@
 
 -- Lifecycle Commands for Bosh-Lite
+
+To start the Bosh-Lite vm, cd to "/bosh-lite"
 ----
-vagrant up
+$  vagrant up
+----
+To stop the bosh-lite vm, cd to "/bosh-lite"
+----
+$ vagrant suspend
+----
+To target the bosh director on the Bosh-Lite vm
+----
+$  bosh target 192.168.50.4
+----
+To verify bosh commandline tool
+----
+$ bosh status
 ----
 
 Configuration Commands
+To create a static route for accessing containers on the vm, cd to "/bosh-lite" (the network might need to be changed in the script)
+----
+$  bin/add-route
+----
+To make a bosh release directory
+----
+$ bosh init
+----
 
 Troubleshooting Commands 
 
