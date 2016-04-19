@@ -77,12 +77,3 @@ VALUE:  YML/manifest simplification
 
 WHAT: This is the ability to control the way that BOSH manages persistent disks after the VM to which they had been attached is destroyed.  Rather than being immediately destroyed, a disk can now be detached and marked “orphan”.  That orphan can then be reattached to another VM and it’s data is available.  If that reattachment does not occur within a specified time limit, a garbage collection process will terminate the disk.  
 
-
-VALUE:This is useful for recovering from user error - e.g. unintended deletion of a job or a whole deployment.
-[a]Can/should this be shared with Customers?
-[b]Hopefully replying via email on cell flows back to the gdoc properly here... 
- 
-Matt - the info is sharable certainly. I usually one-off a doc and share 
-that out with customers since sharing the original exposes internal 
-comments.
-[c]This is very cool.
