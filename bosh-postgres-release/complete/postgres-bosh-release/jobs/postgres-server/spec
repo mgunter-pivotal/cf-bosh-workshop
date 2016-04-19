@@ -1,0 +1,8 @@
+---
+name: postgres-server
+
+templates:
+  pgsql_ctl.erb: bin/pgsql_ctl
+
+packages:
+- postgresql-server
