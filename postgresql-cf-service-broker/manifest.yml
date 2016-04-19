@@ -1,0 +1,4 @@
+---
+applications:
+  - name: postgresql-cf-service-broker
+    buildpack: java_buildpack_offline
