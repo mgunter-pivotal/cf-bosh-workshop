@@ -1,3 +1,5 @@
+Please see https://bosh.io/docs/bosh-lite.html for docs about BOSH Lite.
+
 Lab 1: Testing your Bosh-Lite environment
 
   . Vagrant starts VM
