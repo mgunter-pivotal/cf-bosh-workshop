@@ -1,1 +1,8 @@
 
+Lifecycle Commands for Bosh-Lite
+
+Configuration Commands
+
+Troubleshooting Commands 
+
+Commands that require a password or key
