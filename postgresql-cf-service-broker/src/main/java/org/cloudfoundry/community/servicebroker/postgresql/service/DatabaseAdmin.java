@@ -34,7 +34,7 @@ public class DatabaseAdmin {
 
     public void createDatabaseForInstance(String instanceId, String serviceId, String planId, String organizationGuid, String spaceGuid) throws SQLException {
         Utils.checkValidUUID(instanceId);
-        PostgreSQLDatabase.executeUpdate("CREATE DATABASE \"" + instanceId + "\" ENCODING 'UTF8'");
+        PostgreSQLDatabase.executeUpdate("CREATE DATABASE \"" + instanceId + "\" ENCODING 'SQL_ASCII'");
         PostgreSQLDatabase.executeUpdate("REVOKE all on database \"" + instanceId + "\" from public");
 
 //        Map<Integer, String> parameterMap = new HashMap<Integer, String>();

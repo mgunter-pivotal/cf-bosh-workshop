@@ -48,29 +48,6 @@ public class BrokerConfiguration {
 
     private static final Logger logger = LoggerFactory.getLogger(BrokerConfiguration.class);
 
-    @Value("${MASTER_JDBC_URL}")
-    private String jdbcUrl;
-
-    @Bean
-    public Connection jdbc() {
-        try {
-            Connection conn = DriverManager.getConnection(this.jdbcUrl);
-
-            String serviceTable = "CREATE TABLE IF NOT EXISTS service (serviceinstanceid varchar(200) not null default '',"
-                    + " servicedefinitionid varchar(200) not null default '',"
-                    + " planid varchar(200) not null default '',"
-                    + " organizationguid varchar(200) not null default '',"
-                    + " spaceguid varchar(200) not null default '')";
-
-            Statement createServiceTable = conn.createStatement();
-            createServiceTable.execute(serviceTable);
-            return conn;
-        } catch (SQLException e) {
-            logger.error("Error while creating initial 'service' table", e);
-            return null;
-        }
-    }
-
     @Bean
     public Catalog catalog() throws IOException {
         ServiceDefinition serviceDefinition = new ServiceDefinition("pg", "PostgreSQL", "PostgreSQL on shared instance.",
