@@ -39,6 +39,10 @@ To login to bosh director (use after bosh target)
 ----
 $ bosh login  <admin/admin>
 ----
+To login to a bosh vm (use after bosh login)
+----
+$ bosh ssh <you may need to sudo or sudo su - vcap for certain privileges.  vcap is the user during bosh automation tasks.>
+----
 To login to pcfdev
 ----
 $ cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
@@ -46,3 +50,17 @@ $ cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
 
 -- *Troubleshooting Commands* 
 
+To confirm bosh endpoint details
+----
+$ bosh status
+----
+To confirm the current deployment details, release details, vm details, task details
+----
+$ bosh deployments
+
+$ bosh releases
+
+$ bosh vms
+
+$ bosh tasks
+----
