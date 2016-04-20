@@ -28,8 +28,7 @@ To make a bosh release directory
 $ bosh init
 ----
 
--- * Commands used to Login*
-
+-- *Commands & Credentials used to Login*
 ----
 To login to the vagrant vm (must be in the directory that contains the Vagrantfile)
 ----
@@ -46,4 +45,3 @@ $ cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
 
 -- *Troubleshooting Commands* 
 
-Commands that require a password or key
