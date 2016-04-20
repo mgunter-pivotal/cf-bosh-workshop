@@ -19,6 +19,7 @@ $ bosh status
 ----
 
 -- *Configuration Commands*
+
 To create a static route for accessing containers on the vm, cd to "/bosh-lite" (the network might need to be changed in the script)
 ----
 $  bin/add-route
@@ -29,7 +30,7 @@ $ bosh init
 ----
 
 -- *Commands & Credentials used to Login*
-----
+
 To login to the vagrant vm (must be in the directory that contains the Vagrantfile)
 ----
 $  vagrant ssh <uses insecure key for credentials on vm>
