@@ -29,6 +29,8 @@ $ bosh init
 ----
 
 -- * Commands used to Login*
+
+----
 To login to the vagrant vm (must be in the directory that contains the Vagrantfile)
 ----
 $  vagrant ssh <uses insecure key for credentials on vm>
