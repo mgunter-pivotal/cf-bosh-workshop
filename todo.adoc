@@ -1,0 +1,25 @@
+-- *Must do*
+
+. update the overall slides and images
+.. add information about Bosh 2.0
+.. add information about tiles and the tile generator
+.. add a slide or two on why bosh vs. ops manager
+. Break build down into steps/labs
+.. start with complete/working/deployable assets.
+.. separate the complete assets into 4 Lab starting-point directories (Release Lab, Deploy Lab, Broker running local Lab, Broker in cf Marketplace Lab
+.. create instructions for Release Lab (borrow from Fred Melo's doc)
+.. create instructions for Deploy Lab (borrow from Fred Melo's doc)
+.. create instructions for Broker Lab (borrow from broker readme)
+.. create instructions for CF Lab (borrow from broker readme))
+
+-- *Should do*
+
+. have a few folks review the instructions for clarity /accuracy
+. research bosh documentation and other sources to know as much as possible about it
+. keep updating cheat_sheat
+
+-- *Could do*
+
+. invite a guest speaker to join by phone for deeper questions that we can't answer.
+. have another PA come to help facilitate and support students.
+. have a PA available to help via phone.
