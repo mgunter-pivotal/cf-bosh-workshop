@@ -1,2 +1,19 @@
-Lab02: Building your first Bosh Release
-(this is where Fred's content goes)
+-- Lab02: Building your first Bosh Release
+
+. Running Bosh from within MBPro, but can’t ssh into failed container after deploy
+
+    - So, use #1 above to get into VM
+    
+    - use "bosh create release --dir postgres-release --force” from home directory
+    
+    - use “bosh upload release --dir postgres-release"
+    
+    - use “ vi /postgres-release/postgres.yml” to add the right version
+    
+    - use “bosh deploy —recreate” to run
+    
+    - use “bosh ssh --strict_host_key_checking no” to ssh into container. can look around and then sudo ****, prompted for password
+    
+    - For sudo password, try [ENTER] 3 times….then it works?
+    
+    - recall using sudo su - vcap to run scripts in proper context/user space

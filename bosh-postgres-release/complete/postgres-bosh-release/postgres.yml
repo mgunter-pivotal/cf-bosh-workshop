@@ -1,9 +1,9 @@
 ---
 name: postgres
-director_uuid: 36d4ba35-bed3-4993-b31b-d570af0f961d
+director_uuid: 553a6e62-1b01-4e9a-9cdc-ae95a65e6ab4 
 release:
   name: cf-postgres
-  version: 0+dev.5 
+  version: 0+dev.3
 
 compilation:
   workers: 2
@@ -41,8 +41,8 @@ resource_pools:
  - name: rp1
    network: default
    stemcell:
-    name: bosh-vsphere-esxi-centos-go_agent
-    version: 2776
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent 
+    version: 389
    cloud_properties:
     ram: 16500
     disk: 4096
