@@ -1,0 +1,65 @@
+Please see https://bosh.io/docs/bosh-lite.html for docs about BOSH Lite.
+
+Lab 1: 
+
+. Testing your Bosh-Lite environment
+
+  .. Use Vagrant to start bosh-lite VM
+  
+   -- run "$git clone https://github.com/cloudfoundry/bosh-lite.git "
+    
+        -- cd into the /bosh-lite directory run "$vagrant up" and test "$vagrant ssh"
+        
+    - Vagrant exposes ssh port on host machine @ 2222
+    
+        test "$ssh vagrant@127.0.0.1 -p2222 "
+        note: password should be a key (.vagrant.d/insecure_private_key ), but also can use “vagrant")
+        
+ .. Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
+ 
+    - bosh user is admin, password is “admin"
+    
+    -- run "$bosh target 192.168.50.4"
+    
+    -- run "bosh login"
+    
+    -- Use "$bin/add-route" command from /bosh-lite directory to add a static rout to containers via VM
+    
+        - Note: this add-route file may _NOT BE CORRECT_ for the 10.68.45.0/24 network configured in the Postgres release deployment manifest link:https://github.com/mgunter-pivotal/cf-bosh-workshop/blob/master/bosh-postgres-release/complete/postgres-bosh-release/postgres.yml[here]
+        
+        -Here are the recommended "add-route" file settings for this workshop:
+    ----
+    old_ips="10.68.0.0/16"
+    ips="10.68.0.0/16"
+    gw="192.168.50.4"
+    ----
+    
+    -- check the status of bosh with "$bosh status"
+    
+        image::bosh_status.jpg[]
+
+. Testing your PCFDev environment
+
+  .. Use Vagrant to start PCFDev VM
+  
+   -- run "$git clone https://github.com/pivotal-cf/pcfdev.git "
+    
+        -- update Vagrantfile to port map host port 2223 (instead of 2222)
+        ----
+         config.vm.provider "virtualbox" do |v|
+           v.customize ["modifyvm", :id, "--memory", resources[:memory]]
+           v.customize ["modifyvm", :id, "--cpus", resources[:cpus]]
+           v.customize ["modifyvm", :id, "--ioapic", "on"]
+           v.customize ["modifyvm", :id, "--paravirtprovider", "minimal"]
+           config.vm.network :forwarded_port, guest: 22, host: 2223
+         end
+        ----
+        -- cd into the /bosh-lite directory  run "$vagrant up" and test "$vagrant ssh"
+        
+    - Vagrant exposes ssh port on host machine @ 2223
+    
+        test "$ssh vagrant@127.0.0.1 -p2223 "
+        note: password should be a key (.vagrant.d/insecure_private_key ), but also can use “vagrant")
+        
+ .. Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
+    
