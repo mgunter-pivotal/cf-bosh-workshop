@@ -1,4 +1,6 @@
 Please see https://bosh.io/docs/bosh-lite.html for docs about BOSH Lite.
+Please see https://github.com/pivotal-cf/pcfdev.git for docs about Pcfdev.
+Please see 
 
 Lab 1: 
 
@@ -10,7 +12,7 @@ Lab 1:
     
         -- cd into the /bosh-lite directory run "$vagrant up" and test "$vagrant ssh"
         
-    - Vagrant exposes ssh port on host machine @ 2222
+    -- Vagrant exposes ssh port on host machine @ 2222
     
         test "$ssh vagrant@127.0.0.1 -p2222 "
         note: password should be a key (.vagrant.d/insecure_private_key ), but also can use “vagrant")
@@ -54,12 +56,20 @@ Lab 1:
            config.vm.network :forwarded_port, guest: 22, host: 2223
          end
         ----
+        
         -- cd into the /bosh-lite directory  run "$vagrant up" and test "$vagrant ssh"
         
-    - Vagrant exposes ssh port on host machine @ 2223
+    -- Vagrant will then expose the guest ssh port on host machine @ 2223
     
         test "$ssh vagrant@127.0.0.1 -p2223 "
         note: password should be a key (.vagrant.d/insecure_private_key ), but also can use “vagrant")
         
- .. Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
+ . PCF is running inside the Vagrant vm @ 192.168.11.11
+
+    .. To login to Pcfdev via the CLI
     
+    --$  cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
+    
+    .. To verify PCF commandline tool connected
+    
+    --$ cf target  
