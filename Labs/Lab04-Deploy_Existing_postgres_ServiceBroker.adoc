@@ -1,1 +1,12 @@
-Lab04: Develop a Service Broker for PostgresSQL
+= Lab04: Deploying an Existing postgres Broker for Cloud Foundry
+
+==== *Requirements*
+ - download the spring-music application. git clone https.....
+ 
+==== *Build the broker*
+
+==== *Push the broker to PCF*
+
+==== *Enable the broker for the CF Marketplace*
+
+==== *Test the broker with Spring-Music*

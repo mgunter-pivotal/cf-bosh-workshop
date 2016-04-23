@@ -1,0 +1,12 @@
+= Lab05: Create a Spring-based Service Broker for Cloud Foundry From Scratch
+
+==== *Requirements*
+ - download the spring-music application. git clone https.....
+ 
+==== *Build the broker*
+
+==== *Push the broker to PCF*
+
+==== *Enable the broker for the CF Marketplace*
+
+==== *Test the broker with Spring-Music*
