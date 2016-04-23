@@ -2,11 +2,11 @@
 
 ==== *Requirements*
 
-- __BOSH CLI__ installed
-- Review http://docs.cloudfoundry.org/bosh/create-release.html[BOSH Documentation - Creating a BOSH release]
+. __BOSH CLI__ installed
+. Review http://docs.cloudfoundry.org/bosh/create-release.html[BOSH Documentation - Creating a BOSH release]
 
 ==== *Deploy Postgres as a Bosh Release*
-Start from inside the $WORKSHOP_HOME/bosh-postgres-release/complete/postgres-bosh-release and let's configure and deploy the completed one:
+Start from inside the *$WORKSHOP_HOME/bosh-postgres-release/complete/postgres-bosh-release* and let's configure and deploy the completed one:
 
 *$ bosh create release --force*
 
@@ -305,14 +305,12 @@ Uploading release
 
 ----
 
-$ bosh deployment postgres.yml 
 Deployment set to `/Users/mgunter/Documents/Customers/UltimateSW/cf-bosh-workshop/bosh-postgres-release/complete/postgres-bosh-release/postgres.yml'
 
 ----
 *$ bosh deploy*
 ----
 
-$ bosh deploy
 Acting as user 'admin' on deployment 'postgres' on 'Bosh Lite Director'
 Getting deployment properties from director...
 Unable to get properties list from director, trying without it...
@@ -325,11 +323,17 @@ resource_pools:
 At the end of the Deploy step the terminal should look like the screenshot below:
 image::successful_deploy.jpg
 
-NOTES: some common things to look for:
+
+==== NOTES: some common things to look for:
 - can you bosh ssh into container?
+
 - can you ps -ef|grep postgres (and see 5 processes?)
+
 - did you change your UUID in postgres.yml?
+
 - did you change your version in postgres.yml?
+
 - networking issue...did you run bin/add-route?
+
     
 
