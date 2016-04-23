@@ -18,6 +18,25 @@ To verify bosh commandline tool
 $ bosh status
 ----
 
+- *Lifecycle Commands for pcfdev*
+
+To start the Pcfdev vm, cd to "/pcfdev"
+----
+$  vagrant up
+----
+To stop the Pcfdev vm, cd to "/pcfdev"
+----
+$ vagrant suspend
+----
+To login to Pcfdev via the CLI
+----
+$  cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
+----
+To verify PCF commandline tool connected
+----
+$ cf target
+----
+
 -- *Configuration Commands*
 
 To create a static route for accessing containers on the vm, cd to "/bosh-lite" (the network might need to be changed in the script)

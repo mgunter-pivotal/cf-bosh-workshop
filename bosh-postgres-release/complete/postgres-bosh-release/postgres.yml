@@ -3,7 +3,7 @@ name: postgres
 director_uuid: 553a6e62-1b01-4e9a-9cdc-ae95a65e6ab4 
 release:
   name: cf-postgres
-  version: 0+dev.3
+  version: 0+dev.4
 
 compilation:
   workers: 2
@@ -45,7 +45,7 @@ resource_pools:
     version: 389
    cloud_properties:
     ram: 16500
-    disk: 4096
+    disk: 7128
     cpu: 2
    env:
     bosh:
@@ -57,7 +57,7 @@ jobs:
    template: postgres-server
    instances: 1
    resource_pool: rp1
-   persistent_disk: 4096
+   persistent_disk: 7128
    properties:
      host: 10.68.45.151
    networks:

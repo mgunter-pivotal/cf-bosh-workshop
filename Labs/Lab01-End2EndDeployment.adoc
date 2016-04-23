@@ -1,10 +1,11 @@
+= Lab 1: Set up and Verify bosh-lite and pcfdev
 Please see https://bosh.io/docs/bosh-lite.html for docs about BOSH Lite.
 Please see https://github.com/pivotal-cf/pcfdev.git for docs about Pcfdev.
 Please see 
 
-Lab 1: 
 
-. Testing your Bosh-Lite environment
+
+==== Testing your Bosh-Lite environment
 
   .. Use Vagrant to start bosh-lite VM
   
@@ -40,28 +41,25 @@ Lab 1:
     
         image::bosh_status.jpg[]
 
-. Testing your PCFDev environment
+==== Testing your PCFDev environment
 
   .. Use Vagrant to start PCFDev VM
   
    -- run "$git clone https://github.com/pivotal-cf/pcfdev.git "
     
-        -- update Vagrantfile to port map host port 2223 (instead of 2222)
+        -- In the terminal output: verify how Vagrant chose to port map host port 2200 (instead of 2222)
         ----
-         config.vm.provider "virtualbox" do |v|
-           v.customize ["modifyvm", :id, "--memory", resources[:memory]]
-           v.customize ["modifyvm", :id, "--cpus", resources[:cpus]]
-           v.customize ["modifyvm", :id, "--ioapic", "on"]
-           v.customize ["modifyvm", :id, "--paravirtprovider", "minimal"]
-           config.vm.network :forwarded_port, guest: 22, host: 2223
-         end
+        ==> default: Waiting for machine to boot. This may take a few minutes...
+            default: SSH address: 127.0.0.1:2200
+            default: SSH username: vagrant
+
         ----
         
         -- cd into the /bosh-lite directory  run "$vagrant up" and test "$vagrant ssh"
         
     -- Vagrant will then expose the guest ssh port on host machine @ 2223
     
-        test "$ssh vagrant@127.0.0.1 -p2223 "
+        test "$ssh vagrant@127.0.0.1 -p2220 "
         note: password should be a key (.vagrant.d/insecure_private_key ), but also can use “vagrant")
         
  . PCF is running inside the Vagrant vm @ 192.168.11.11
