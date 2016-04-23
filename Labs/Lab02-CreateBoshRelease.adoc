@@ -323,6 +323,7 @@ resource_pools:
 At the end of the Deploy step the terminal should look like the screenshot below:
 image::successful_deploy.jpg
 
+----
 
 ==== NOTES: some common things to look for:
 - can you bosh ssh into container?
@@ -333,7 +334,7 @@ image::successful_deploy.jpg
 
 - did you change your version in postgres.yml?
 
-- networking issue...did you run bin/add-route?
+- networking issue...did you edit and run bin/add-route?
 
     
 
