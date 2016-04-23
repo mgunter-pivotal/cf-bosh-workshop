@@ -7,26 +7,26 @@ Please see
 
 ==== Testing your Bosh-Lite environment
 
-  .. Use Vagrant to start bosh-lite VM
+  . Use Vagrant to start bosh-lite VM
   
-   -- run "$git clone https://github.com/cloudfoundry/bosh-lite.git "
+   run "$git clone https://github.com/cloudfoundry/bosh-lite.git "
     
-        -- cd into the /bosh-lite directory run "$vagrant up" and test "$vagrant ssh"
+        cd into the /bosh-lite directory run "$vagrant up" and test "$vagrant ssh"
         
-    -- Vagrant exposes ssh port on host machine @ 2222
+     Vagrant exposes ssh port on host machine @ 2222
     
         test "$ssh vagrant@127.0.0.1 -p2222 "
-        note: password should be a key (.vagrant.d/insecure_private_key ), but also can use “vagrant")
+         note: password should not be required ( due to key in well-known location: .vagrant.d/insecure_private_key , but also can use “vagrant")
         
- .. Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
+ . Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
  
     - bosh user is admin, password is “admin"
     
-    -- run "$bosh target 192.168.50.4"
+     run "$bosh target 192.168.50.4"
     
-    -- run "bosh login"
-    
-    -- Use "$bin/add-route" command from /bosh-lite directory to add a static rout to containers via VM
+     run "bosh login"
+     
+     - Use "$bin/add-route" command from /bosh-lite directory to add a static rout to containers via VM
     
         - Note: this add-route file may _NOT BE CORRECT_ for the 10.68.45.0/24 network configured in the Postgres release deployment manifest link:https://github.com/mgunter-pivotal/cf-bosh-workshop/blob/master/bosh-postgres-release/complete/postgres-bosh-release/postgres.yml[here]
         
@@ -37,37 +37,37 @@ Please see
     gw="192.168.50.4"
     ----
     
-    -- check the status of bosh with "$bosh status"
+     check the status of bosh with "$bosh status"
     
         image::bosh_status.jpg[]
 
 ==== Testing your PCFDev environment
 
-  .. Use Vagrant to start PCFDev VM
+  . Use Vagrant to start PCFDev VM
   
-   -- run "$git clone https://github.com/pivotal-cf/pcfdev.git "
+     run "$git clone https://github.com/pivotal-cf/pcfdev.git "
     
-        -- In the terminal output: verify how Vagrant chose to port map host port 2200 (instead of 2222)
+          - In the terminal output: verify how Vagrant chose to port map host port 2200 (instead of 2222)
+         
         ----
         ==> default: Waiting for machine to boot. This may take a few minutes...
             default: SSH address: 127.0.0.1:2200
             default: SSH username: vagrant
 
-        ----
         
-        -- cd into the /bosh-lite directory  run "$vagrant up" and test "$vagrant ssh"
+        - cd into the /bosh-lite directory  run "$vagrant up" and test "$vagrant ssh"
         
-    -- Vagrant will then expose the guest ssh port on host machine @ 2223
+    - Vagrant will then expose the guest ssh port on host machine @ 2223
     
-        test "$ssh vagrant@127.0.0.1 -p2220 "
-        note: password should be a key (.vagrant.d/insecure_private_key ), but also can use “vagrant")
+        test connectivity:  "$ssh vagrant@127.0.0.1 -p2220 "
+        note: password should not be required ( due to key in well-known location: .vagrant.d/insecure_private_key , but also can use “vagrant")
         
  . PCF is running inside the Vagrant vm @ 192.168.11.11
 
     .. To login to Pcfdev via the CLI
     
-    --$  cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
+    $  cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
     
     .. To verify PCF commandline tool connected
     
-    --$ cf target  
+    $ cf target  
