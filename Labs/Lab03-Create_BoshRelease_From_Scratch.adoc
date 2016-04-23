@@ -1,0 +1,272 @@
+= Lab03: Creating a Bosh Release "from scratch"
+
+==== *Requirements*
+ - Install the "tree" utility "apt-get install tree" or "yum install tree -y"
+ 
+==== *Deploy Postgres as a Bosh Release*
+Start from inside the *$WORKSHOP_HOME/* and let's configure and deploy the completed one:
+
+*$ bosh init release my_postgres_release*
+
+
+-- you should see an output like this:
+
+----
+Release directory initialized
+----
+
+*$ cd my_postgres_release*
+
+*$ tree*
+
+----
+├── blobs
+├── config
+│   └── blobs.yml
+├── jobs
+├── packages
+└── src
+----
+
+--
+
+*$ bosh generate job my-pg-server*
+----
+create	jobs/my-pg-server
+
+create	jobs/my-pg-server/templates
+
+create	jobs/my-pg-server/spec
+
+create	jobs/my-pg-server/monit
+
+
+Generated skeleton for `my-pg-server' job in `jobs/my-pg-server'
+----
+
+- Check the directory tree again 
+----
+$ tree
+----
+- For each job created, check the files jobs/<job_name>/spec and jobs/<job_name>/monit. In this case:
+----
+$ more jobs/my-pg-server/spec
+$ more jobs/my-pg-server/monit
+----
+- Let's now create a template for starting/stopping the job. Create a file on the __templates__ directory, naming it __pgsql_ctl.erb__
+
+source for jobs/my-pg-server/templates/pgsql_ctl.erb
+----
+#!/bin/bash -e
+
+LOG_DIR=/var/vcap/sys/log/postgres-server/
+DATA_DIR=/var/vcap/jobs/postgres-server/data/
+BASE_DIR=/var/vcap/packages/postgresql-server/
+BINARY_DIR=$BASE_DIR/bin
+
+case $1 in
+  start)
+
+   if ! test -d $LOG_DIR; then
+
+      sudo mkdir $LOG_DIR
+      sudo chown -R vcap:vcap $LOG_DIR
+   fi
+
+
+
+   if ! test -d $DATA_DIR; then
+      mkdir $DATA_DIR
+      sudo chown -R vcap:vcap $DATA_DIR
+      sudo chmod 700 $DATA_DIR
+
+      sudo -u vcap $BINARY_DIR/pg_ctl initdb -D $DATA_DIR -o "--auth=trust"
+
+      # enable TCP/IP connections
+      sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" $DATA_DIR/postgresql.conf
+      sed -i 's/#port = 5432/port = 5432/g' $DATA_DIR/postgresql.conf
+      echo 'host		all	all	0.0.0.0/0	trust' >>$DATA_DIR/pg_hba.conf 
+ 
+
+   fi
+ 
+   sudo -u vcap $BINARY_DIR/pg_ctl start -l $LOG_DIR/server.log -D $DATA_DIR
+
+
+    ;;
+
+  stop)
+
+    sudo -u vcap $BINARY_DIR/pg_ctl stop -D $DATA_DIR -l $LOG_DIR/server.log
+
+    ;;
+
+  *)
+    echo "Usage: pgsql_ctl {start|stop}"
+
+    ;;
+
+esac
+----
+
+
+The instructor will discuss the contents of that file with you.
+
+- Now edit the __monit__ script to look like
+
+----
+check process psql
+  with pidfile /var/vcap/jobs/postgres-server/data/postmaster.pid
+  start program "/var/vcap/jobs/postgres-server/bin/pgsql_ctl start" with timeout 600 seconds
+  stop program "/var/vcap/jobs/postgres-server/bin/pgsql_ctl stop"
+  group vcap
+----
+
+This script is responsible for starting and stopping our job. See it references a file called __pgsql_ctl__, and that will be generated based on the template __pgsql_ctl.erb__ we already created on a previous step.
+
+- Let's now work on the  __spec__ file for that job:
+
+----
+name: my-pg-server
+
+templates:
+  pgsql_ctl.erb: bin/pgsql_ctl
+
+packages:
+- my-pg-pkg
+----
+
+That tells bosh to create a __bin/pgsql_ctl__ script based on our __pgsql_ctl.erb__ template. We could use BOSH variables in this file, and the transformations would be applied when compiling the job.
+
+At this point we should have our *job* almost completed. Install script based on sources is ready, Monit knows what to monitor and what scripts to call in order to start/stop the process, and the script to start the server is created. 
+Let's generate now the package itself, with the installer and other configurations needed in order to run this process.
+
+- Now we'll work on the package the job depends upon. Start by generating the __postgresql__ package:
+
+*$ bosh generate package my-pg-pkg*
+
+----
+create	packages/my-pg-pkg
+create	packages/my-pg-pkg/packaging
+create	packages/my-pg-pkg/pre_packaging
+create	packages/my-pg-pkg/spec
+
+Generated skeleton for `my-pg-pkg' package in `packages/my-pg-pkg'
+----
+
+- Now check the __spec__ and __packaging__ scripts for the package created. Change the __spec__ file to include the PostgreSQL sources we'll use to compile the package:
+
+----
+name: my-pg-pkg
+
+dependencies:
+
+files:
+- postgresql-9.3.5.tar.gz  # from http://www.postgresql.org/ftp/source/v9.3.5/
+----
+
+Note: Download the file indicated above and place it under the __src__ directory. BOSH will look for that file under __src__ and __blobs__.
+
+- Now edit the __packaging__ script for that package to install the sources:
+
+----
+# abort script on any command that exits with a non zero value
+# abort script on any command that exits with a non zero value
+set -e
+
+tar zxvf postgresql-9.3.5.tar.gz
+pushd postgresql-9.3.5
+  # need to run as root?
+  # sudo su -
+  ./configure --prefix=${BOSH_INSTALL_TARGET}
+
+  make
+  make install
+popd
+
+# post-install procedures
+LD_LIBRARY_PATH=/usr/local/pgsql/lib
+export LD_LIBRARY_PATH
+----
+
+- Although we don't have blobs for this release (we're providing everything needed as source), it's mandatory to configure a blobstore, so we'll do a dummy config.
+Create the file __config/final.yml__ and paste the following:
+
+----
+---
+final_name: cf-postgres
+min_cli_version: 1.5.0.pre.1142
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /tmp/postgres-blobs
+----
+
+
+That should be all for the package.
+
+- Build the dev release:
+----
+$ bosh create release --force
+----
+
+you should see an output like this:
+
+----
+Syncing blobs...
+
+Building DEV release
+~--------------------------------
+Release artifact cache: /Users/mgunter/.bosh/cache
+
+Building license
+~---------------
+Building license...
+  Warning: Missing LICENSE or NOTICE in /Users/mgunter/Documents/Customers/UltimateSW/cf-bosh-workshop/my_postgres_release
+
+
+Building packages
+~----------------
+Building my-pg-pkg...
+  Using dev version 'c6b28260673161ebe4f51422075e9afa0d2c8384'
+
+
+Resolving dependencies
+~---------------------
+Dependencies resolved, correct build order is:
+- my-pg-pkg
+
+
+Building jobs
+~------------
+Building my-pg-server...
+  Using dev version '0e57399d0c55b2984d334710629beeeb6a347298'
+
+
+Building release
+~---------------
+
+Generating manifest...
+~---------------------
+Writing manifest...
+
+Release summary
+~--------------
+Packages
++-----------+------------------------------------------+-------+
+| Name      | Version                                  | Notes |
++-----------+------------------------------------------+-------+
+| my-pg-pkg | c6b28260673161ebe4f51422075e9afa0d2c8384 |       |
++-----------+------------------------------------------+-------+
+
+Jobs
++--------------+------------------------------------------+-------+
+| Name         | Version                                  | Notes |
++--------------+------------------------------------------+-------+
+| my-pg-server | 0e57399d0c55b2984d334710629beeeb6a347298 |       |
++--------------+------------------------------------------+-------+
+
+Release name: my-postgres
+Release version: 0+dev.2
+Release manifest: /Users/mgunter/Documents/Customers/UltimateSW/cf-bosh-workshop/my_postgres_release/dev_releases/my-postgres/my-postgres-0+dev.2.yml
+----

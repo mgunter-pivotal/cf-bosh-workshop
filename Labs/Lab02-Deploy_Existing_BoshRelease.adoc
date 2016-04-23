@@ -1,4 +1,4 @@
-= Lab02: Creating A Bosh Release
+= Lab02: Deploying an Existing Bosh Release
 
 ==== *Requirements*
 
