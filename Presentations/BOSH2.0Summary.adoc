@@ -1,0 +1,79 @@
+= BOSH 2.0 [a][b]
+
+
+The new features in 2.0 are an effort to simplify BOSH deployments (manifest 2.0, cloud config, AZs) and “Day 2” CF management (links, runtime config, renaming/migrating jobs, persistent/orphaned disks).
+
+
+Another aspect of 2.0 is shift of many manifest entities to the BOSH Director and thus the ability to inspect and often manipulate them via CLI/API.
+
+
+________________
+
+
+== Manifest v2
+WHAT:  Manifest v2 is a realignment of the YML deployment manifest in a more concise and logical order.  
+
+
+VALUE:  This makes it easier to create a useable manifest and continually augment that manifest over time while reducing the potential for error.  It also removes an IaaS-specific configuration (see Cloud Config)
+
+
+
+
+== Cloud Config
+WHAT:  This is a simplification of the deployment manifest that separates IaaS-specific configuration and IaaS-agnostic configuration.  The IaaS-specific config is abstracted out to its own YML file.  This was the deployment manifest maintains an agnostic perspective.  This also enable network topology sharing across deployments.
+
+
+IMPORTANT: Adding a cloud config to the director means that all 1.x style deployments must be updated to BOSH 2.0 manifests or you will be unable to re-deploy.
+
+
+VALUE:  YML/manifest simplification and IaaS agnostic
+
+
+
+
+
+== AZs
+WHAT:  This is the “promotion” of Availability Zones to a named entity type in BOSH and specifically the BOSH Director.  Rather than having disparate config entries in various places across a deployment manifest, all AZ config is concentrated in its own AZ block.  Equivalent entities are Networks, VM Types, Disk Types, Configuration.
+
+
+VALUE:  YML/manifest simplification  
+
+
+
+
+
+== Links
+WHAT:  Links are a configuration construct that greatly simplifies the ability for a job in a given release to communicate with a job (which can be in the same release or in a different release).  For example, a web app that is defined as a job in release x can communicate with a backing database that is defined as a job in release b.  
+
+
+VALUE:  Deployment manifest authors benefit from simplification and error reduction.  Operators benefit from the enhanced ability to manage multiple environments and the fact that there is no more manual IP management.
+
+
+
+
+
+== Runtime config
+WHAT:  This enables a user to leverage add-ons to deploy an agent to BOSh VMs.  Once the user writes a release for a specific agent, that release can be BOSH deployed and the agent will be created and managed by BOSH.
+
+
+VALUE:  The ability to add agents to VMs
+
+
+
+
+
+== Renaming/migrating jobs
+WHAT:  Circumstances dictate that there are times when there are advantages to be gained from renaming or migrating Instance Groups.  This feature gives the operator the ability to easily perform that rename or migration.  Migration is coupled with the AZ as first class object feature and is the act of moving Instance Group information into the AZ block which simplifies the manifest.
+
+
+VALUE:  YML/manifest simplification
+
+
+
+
+
+== Persistent and orphaned disks[c]
+
+
+WHAT: This is the ability to control the way that BOSH manages persistent disks after the VM to which they had been attached is destroyed.  Rather than being immediately destroyed, a disk can now be detached and marked “orphan”.  That orphan can then be reattached to another VM and it’s data is available.  If that reattachment does not occur within a specified time limit, a garbage collection process will terminate the disk.  
+

@@ -1,7 +1,6 @@
 = Lab 1: Set up and Verify bosh-lite and pcfdev
 Please see https://bosh.io/docs/bosh-lite.html for docs about BOSH Lite.
 Please see https://github.com/pivotal-cf/pcfdev.git for docs about Pcfdev.
-Please see 
 
 
 

@@ -77,7 +77,7 @@ Release version: 0+dev.4
 Release manifest: /Users/mgunter/Documents/Customers/UltimateSW/cf-bosh-workshop/bosh-postgres-release/complete/postgres-bosh-release/dev_releases/cf-postgres/cf-postgres-0+dev.4.yml
 ----
 
-Now we should be able to do our first test with our release.
+Now we should be able to upload the required stemcell and our release.
 
 - Download the Ubuntu Stemcell for Warden:
 
@@ -326,9 +326,9 @@ image::successful_deploy.jpg
 ----
 
 ==== NOTES: some common things to look for:
-- can you bosh ssh into container?
+- can you bosh ssh into the postgres container?
 
-- can you ps -ef|grep postgres (and see 5 processes?)
+- from inside the posgres containr, can you ps -ef|grep postgres (and see 5 processes?)
 
 - did you change your UUID in postgres.yml?
 
