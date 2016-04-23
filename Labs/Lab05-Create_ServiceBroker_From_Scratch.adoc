@@ -3,10 +3,10 @@
 ==== *Requirements*
  - download the spring-music application. git clone https.....
  
-==== *Build the broker*
+==== *Build the starter project*
 
-==== *Push the broker to PCF*
+==== *Implement the logic *
 
-==== *Enable the broker for the CF Marketplace*
+==== *Debug the Broker*
 
-==== *Test the broker with Spring-Music*
+==== *Follow Lab 4's Push instructions and Test the broker with Spring-Music*
