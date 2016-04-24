@@ -47,6 +47,26 @@ Generated skeleton for `my-pg-server' job in `jobs/my-pg-server'
 - Check the directory tree again 
 ----
 $ tree
+.
+├── blobs
+├── config
+│   ├── blobs.yml
+│   ├── dev.yml
+│   └── final.yml
+├── dev_releases
+│   └── my-postgres
+├── jobs
+│   └── my-pg-server
+│       ├── monit
+│       ├── spec
+│       └── templates
+├── packages
+│   └── my-pg-pkg
+│       ├── packaging
+│       ├── pre_packaging
+│       └── spec
+├── postgres.yml
+└── src
 ----
 - For each job created, check the files jobs/<job_name>/spec and jobs/<job_name>/monit. In this case:
 ----
