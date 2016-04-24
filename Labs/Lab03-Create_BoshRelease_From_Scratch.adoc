@@ -59,9 +59,9 @@ source for jobs/my-pg-server/templates/pgsql_ctl.erb
 ----
 #!/bin/bash -e
 
-LOG_DIR=/var/vcap/sys/log/postgres-server/
-DATA_DIR=/var/vcap/jobs/postgres-server/data/
-BASE_DIR=/var/vcap/packages/postgresql-server/
+LOG_DIR=/var/vcap/sys/log/my-pg-server
+DATA_DIR=/var/vcap/jobs/my-pg-server/data
+BASE_DIR=/var/vcap/packages/my-pg-pkg
 BINARY_DIR=$BASE_DIR/bin
 
 case $1 in
@@ -116,9 +116,9 @@ The instructor will discuss the contents of that file with you.
 
 ----
 check process psql
-  with pidfile /var/vcap/jobs/postgres-server/data/postmaster.pid
-  start program "/var/vcap/jobs/postgres-server/bin/pgsql_ctl start" with timeout 600 seconds
-  stop program "/var/vcap/jobs/postgres-server/bin/pgsql_ctl stop"
+  with pidfile /var/vcap/jobs/my-pg-server/data/postmaster.pid
+  start program "/var/vcap/jobs/my-pg-server/bin/pgsql_ctl start" with timeout 600 seconds
+  stop program "/var/vcap/jobs/my-pg-server/bin/pgsql_ctl stop"
   group vcap
 ----
 
@@ -269,4 +269,135 @@ Jobs
 Release name: my-postgres
 Release version: 0+dev.2
 Release manifest: /Users/mgunter/Documents/Customers/UltimateSW/cf-bosh-workshop/my_postgres_release/dev_releases/my-postgres/my-postgres-0+dev.2.yml
+----
+--
+==== We will need a "postgres.yml" file for deploying this release.
+
+-- Use the one from Lab 2 as an example and make the following changes --
+
+. Change the names of the deployment, release, job, and job template. Also make the release version MATCH the lastest upload:
++
+----
+---
+name: my-postgres
+director_uuid: 553a6e62-1b01-4e9a-9cdc-ae95a65e6ab4 
+release:
+  name: my-postgres
+  version: 0+dev.3
+----  
+
+. Change the static IP address for the job as shown below:
+
+----
+jobs:
+ - name: my-pg-server
+   template: my-pg-server
+   instances: 1
+   resource_pool: rp1
+   persistent_disk: 7128
+   properties:
+     host: 10.68.45.151
+   networks:
+   - name: default
+     static_ips:
+     - 10.68.45.152
+----     
+
+==== Finally Deploy the release
+
+- deploy the dev release:
+
+*$ bosh deploy*
+
+----
+RSA 1024 bit CA certificates are loaded due to old openssl compatibility
+Acting as user 'admin' on deployment 'my-postgres' on 'Bosh Lite Director'
+Getting deployment properties from director...
+Unable to get properties list from director, trying without it...
+
+Detecting deployment changes
+~---------------------------
+resource_pools:
+- name: rp1
+  network: default
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: '389'
+  cloud_properties:
+    ram: 16500
+    disk: 7128
+    cpu: 2
+  env:
+    bosh:
+      password: <redacted>
+compilation:
+  workers: 2
+  cloud_properties:
+    ram: 8192
+    disk: 8096
+    cpu: 4
+  network: default
+  reuse_compilation_vms: true
+networks:
+- name: default
+  subnets:
+  - range: 10.68.45.0/24
+    gateway: 10.68.45.1
+    dns:
+    - 10.103.42.51
+    static:
+    - 10.68.45.151
+    - 10.68.45.152
+    - 10.68.45.153
+    reserved:
+    - 10.68.45.2-10.68.45.150
+    cloud_properties:
+      name: PCF_SERVICES
+update:
+  canaries: 1
+  canary_watch_time: 3000 - 180000
+  update_watch_time: 3000 - 180000
+  max_in_flight: 2
+  max_errors: 1
+jobs:
+- name: my-pg-server
+  template: my-pg-server
+  instances: 1
+  resource_pool: rp1
+  persistent_disk: 7128
+  properties:
+    host: <redacted>
+  networks:
+  - name: default
+    static_ips:
+    - 10.68.45.152
+name: my-postgres
+director_uuid: 553a6e62-1b01-4e9a-9cdc-ae95a65e6ab4
+release:
+  name: my-postgres
+  version: 0+dev.11
+properties:
+  host: <redacted>
+Please review all changes carefully
+
+Deploying
+~--------
+Are you sure you want to deploy? (type 'yes' to continue): yes
+
+Director task 86
+  Started preparing deployment > Preparing deployment. Done (00:00:00)
+
+  Started preparing package compilation > Finding packages to compile. Done (00:00:00)
+
+  Started creating missing vms > my-pg-server/0 (9c2e7163-b4df-451c-97a0-3c929af0a0fa). Done (00:00:01)
+
+  Started updating job my-pg-server > my-pg-server/0 (9c2e7163-b4df-451c-97a0-3c929af0a0fa) (canary). Done (00:00:13)
+
+Task 86 done
+
+Started		2016-04-24 05:47:22 UTC
+Finished	2016-04-24 05:47:36 UTC
+Duration	00:00:14
+
+Deployed `my-postgres' to `Bosh Lite Director'
 ----
