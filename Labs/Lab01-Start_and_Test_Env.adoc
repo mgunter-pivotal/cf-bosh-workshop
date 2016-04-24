@@ -15,8 +15,8 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
         
      Vagrant exposes ssh port on host machine @ 2222
     
-        test "$ssh vagrant@127.0.0.1 -p2222 "
-         note: password should not be required ( due to key in well-known location: .vagrant.d/insecure_private_key , but also can use “vagrant")
+        test "$vagrant ssh "
+
         
  . Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
  
@@ -59,8 +59,8 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
         
     - Vagrant will then expose the guest ssh port on host machine @ 2223
     
-        test connectivity:  "$ssh vagrant@127.0.0.1 -p2220 "
-        note: password should not be required ( due to key in well-known location: .vagrant.d/insecure_private_key , but also can use “vagrant")
+        test connectivity:  "$vagrant ssh "
+
         
  . PCF is running inside the Vagrant vm @ 192.168.11.11
 
