@@ -71,3 +71,6 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
     .. To verify PCF commandline tool connected
     
     $ cf target  
+
+
+end of Lab

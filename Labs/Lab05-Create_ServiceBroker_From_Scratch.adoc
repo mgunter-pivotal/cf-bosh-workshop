@@ -5,8 +5,8 @@
 
   git clone https://github.com/spring-cloud-samples/cloudfoundry-service-broker.git
   
-  - This example is for MongoDB, but you can use it as a starting point for any service broker implementation.
-  - Review the source code for the following java classesd. (Note you can use Eclipse or IntelliJ or just a text editor)
+  - This example is for *MongoDB*, but you can use it as a starting point for any service broker implementation.
+  - Review the source code for the following java classes (13 files). (Note you can use Eclipse or IntelliJ or just a text editor)
   
 
 ----
@@ -51,7 +51,7 @@ main$ tree
  
 ==== *Modify the starter project*
 
--- change to the postgresql-cf-service-broker directory that is part of this workshop
+-- Copy from the "/main" directory of the postgresql-cf-service-broker project that is part of this workshop
 
 ----
 $ cd postgresql-cf-service-broker/
@@ -87,15 +87,46 @@ main $ tree
 ----
 
 ==== *Implement the logic*
--- Replace the mongodb directory with the postgresql directory
+-- Replace the mongodb "/main" directory with the postgresql "/main" directory
 
 -- Repace mongodb pom.xml with the one from the postgres project
 
--- rm -r on src/test
+-- rm -r on mongodb's src/test directory (we could have also copied the test classes from the postgres project)
+
+-- Make a trivial change to the broker code. One option is to change the name of the plan to Ultimate from Basic:
+.. change *BrokerConfiguration.java* from
+
+----
+private static List<Plan> getPlans() {
+        Plan basic = new Plan("postgresql-basic-plan", "Basic PostgreSQL Plan",
+                "A PG plan providing a single database on a shared instance with limited storage.", getBasicPlanMetadata());
+        return Arrays.asList(basic);
+    }
+----
+
+..to
+
+----
+private static List<Plan> getPlans() {
+        Plan basic = new Plan("postgresql-basic-plan", "Ultimate PostgreSQL Plan",
+                "A PG plan providing a single database on a shared instance with limited storage.", getBasicPlanMetadata());
+        return Arrays.asList(basic);
+    }
+----
 
 ==== *Build the New Broker*
 
 -- mvn package -DskipTests 
 
 
-==== *Follow Lab 4's Push instructions and Test the broker with Spring-Music*
+==== *Follow Lab 4's Push instructions and Test the broker app with Spring Music. You can also just test the REST api*
+
+-- example url for the rest api (user/mysecret). Look for "Ultimate" in the plan name.
+
+http://postgresql-cf-service-broker2.local.pcfdev.io/v2/catalog
+
+----
+"plans":[{"id":"postgresql-basic-plan","name":"Ultimate PostgreSQL Plan"
+----
+
+end of Lab

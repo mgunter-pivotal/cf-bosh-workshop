@@ -412,3 +412,5 @@ Deployed `my-postgres' to `Bosh Lite Director'
 Trying 10.68.45.152...
 Connected to 10.68.45.152.
 ----
+
+end of Lab

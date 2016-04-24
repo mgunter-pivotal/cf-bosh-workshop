@@ -158,3 +158,5 @@ $ cf restage spring-music
 
 -- You should see the following in the browser:
 image::spring-music-with-postgres.jpg
+
+end of Lab
