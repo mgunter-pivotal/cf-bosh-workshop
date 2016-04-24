@@ -3,7 +3,7 @@
 ==== *Requirements*
  - Install the "tree" utility "apt-get install tree" or "yum install tree -y"
  
-==== *Deploy Postgres as a Bosh Release*
+==== *1. Create a Postgres Bosh Release*
 Start from inside the *$WORKSHOP_HOME/* and let's configure and deploy the completed one:
 
 *$ bosh init release my_postgres_release*
@@ -271,7 +271,38 @@ Release version: 0+dev.2
 Release manifest: /Users/mgunter/Documents/Customers/UltimateSW/cf-bosh-workshop/my_postgres_release/dev_releases/my-postgres/my-postgres-0+dev.2.yml
 ----
 --
-==== We will need a "postgres.yml" file for deploying this release.
+
+After creating it, we must upload it to the bosh director:
+
+----
+$ bosh upload release 
+ ( missing output)
+Uploading release
+release.tgz:    96% |oooooooooooooooooooooooooooooooooooooooooooooooooooo   |   1.3KB 121.8KB/s ETA:  00:00:00
+Director task 85
+  Started extracting release > Extracting release. Done (00:00:00)
+  
+  Started verifying manifest > Verifying manifest. Done (00:00:00)
+
+  Started resolving package dependencies > Resolving package dependencies. Done (00:00:00)
+
+  Started processing 1 existing package > Processing 1 existing package. Done (00:00:00)
+
+  Started processing 1 existing job > Processing 1 existing job. Done (00:00:00)
+
+  Started release has been created > my-postgres/0+dev.11. Done (00:00:00)
+ 
+Task 85 done
+
+Started		2016-04-24 05:47:07 UTC
+Finished	2016-04-24 05:47:07 UTC
+Duration	00:00:00
+release.tgz:    96% |oooooooooooooooooooooooooooooooooooooooooooooooooooo   |   1.3KB    324B/s Time: 00:00:04
+
+Release uploaded
+----
+
+==== 2. We will need a "postgres.yml" file for deploying this release.
 
 -- Use the one from Lab 2 as an example and make the following changes --
 
@@ -303,7 +334,7 @@ jobs:
      - 10.68.45.152
 ----     
 
-==== Finally Deploy the release
+==== 3. Finally Deploy the release
 
 - deploy the dev release:
 
@@ -402,7 +433,7 @@ Duration	00:00:14
 Deployed `my-postgres' to `Bosh Lite Director'
 ----
 
--- Let's confirm that postgres is up and listening:
+==== 4. Let's confirm that postgres is up and listening:
 
 ( You can also use pgadmin to connect to the database with vcap/vcap )
 

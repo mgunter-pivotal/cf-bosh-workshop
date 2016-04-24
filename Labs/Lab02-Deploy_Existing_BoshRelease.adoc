@@ -5,7 +5,7 @@
 . __BOSH CLI__ installed
 . Review http://docs.cloudfoundry.org/bosh/create-release.html[BOSH Documentation - Creating a BOSH release]
 
-==== *Deploy Postgres as a Bosh Release*
+==== *1. Deploy Postgres as a Bosh Release*
 Start from inside the *$WORKSHOP_HOME/bosh-postgres-release* and let's configure and deploy the completed one:
 
 *$ bosh create release --force*
@@ -237,7 +237,7 @@ You must set the UUID to match your Bosh Director.....
 
 When in doubt, you can always check the deployment manifest reference http://docs.cloudfoundry.org/bosh/deployment-manifest.html[here]
 
-==== *Testing the release*:
+==== *2. Testing the release*:
 
 
 *$ bosh target 192.168.50.4*

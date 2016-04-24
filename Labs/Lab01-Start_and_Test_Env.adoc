@@ -5,7 +5,7 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
 
 
 
-==== Testing your Bosh-Lite environment
+==== 1. Testing your Bosh-Lite environment
 
   . Use Vagrant to start bosh-lite VM
   
@@ -41,7 +41,7 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
     
         image::bosh_status.jpg[]
 
-==== Testing your PCFDev environment
+==== 2. Testing your PCFDev environment
 
   . Use Vagrant to start PCFDev VM
   
