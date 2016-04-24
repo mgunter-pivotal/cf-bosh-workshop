@@ -8,14 +8,14 @@
   - This example is for MongoDB, but you can use it as a starting point for any service broker implementation.
   - Review the source code for the following java classesd. (Note you can use Eclipse or IntelliJ or just a text editor)
   
- ----
-$ cd cloudfoundry-service-broker/
 
-cloudfoundry-service-broker mgunter$ ls
+----
+$ cd cloudfoundry-service-broker
+
+cloudfoundry-service-broker$ ls
 README.md	gradle		gradlew.bat	mvnw		pom.xml
 build.gradle	gradlew		manifest.yml	mvnw.cmd	src
 
-----
 cloudfoundry-service-broker$ cd src/main/
 main$ tree
 ├── java
@@ -44,6 +44,7 @@ main$ tree
     ├── application.yml
     └── log4j.xml
 12 directories, 13 files
+
 ----
   
   
