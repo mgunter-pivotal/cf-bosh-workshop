@@ -6,7 +6,7 @@
 . Review http://docs.cloudfoundry.org/bosh/create-release.html[BOSH Documentation - Creating a BOSH release]
 
 ==== *Deploy Postgres as a Bosh Release*
-Start from inside the *$WORKSHOP_HOME/bosh-postgres-release/complete/postgres-bosh-release* and let's configure and deploy the completed one:
+Start from inside the *$WORKSHOP_HOME/bosh-postgres-release* and let's configure and deploy the completed one:
 
 *$ bosh create release --force*
 
@@ -74,7 +74,7 @@ Jobs affected by changes in this release
 
 Release name: cf-postgres
 Release version: 0+dev.4
-Release manifest: /Users/mgunter/Documents/Customers/UltimateSW/cf-bosh-workshop/bosh-postgres-release/complete/postgres-bosh-release/dev_releases/cf-postgres/cf-postgres-0+dev.4.yml
+Release manifest: cf-bosh-workshop/postgres-bosh-release/dev_releases/cf-postgres/cf-postgres-0+dev.4.yml
 ----
 
 Now we should be able to upload the required stemcell and our release.
@@ -305,7 +305,7 @@ Uploading release
 
 ----
 
-Deployment set to `/Users/mgunter/Documents/Customers/UltimateSW/cf-bosh-workshop/bosh-postgres-release/complete/postgres-bosh-release/postgres.yml'
+Deployment set to `..cf-bosh-workshop/bosh-postgres-release/postgres.yml'
 
 ----
 *$ bosh deploy*
