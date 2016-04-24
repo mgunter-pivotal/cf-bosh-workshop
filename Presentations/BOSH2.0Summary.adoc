@@ -1,4 +1,4 @@
-= BOSH 2.0 [a][b]
+= BOSH 2.0 Feature Summary
 
 
 The new features in 2.0 are an effort to simplify BOSH deployments (manifest 2.0, cloud config, AZs) and “Day 2” CF management (links, runtime config, renaming/migrating jobs, persistent/orphaned disks).
@@ -7,7 +7,6 @@ The new features in 2.0 are an effort to simplify BOSH deployments (manifest 2.0
 Another aspect of 2.0 is shift of many manifest entities to the BOSH Director and thus the ability to inspect and often manipulate them via CLI/API.
 
 
-________________
 
 
 == Manifest v2

@@ -35,21 +35,23 @@ Simply run the JAR file and provide a PostgreSQL jdbc url via the `MASTER_JDBC_U
 
 == Lab Steps:
 
-==== *1. Build the broker*
+==== *1. Build the broker app*
 
 edit application.properties so that JDBC points to your test instance of Postgres.
 
 Then you are ready to build with maven:
 
 ....
-mvn package -DskipTests &&  java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
+mvn package -DskipTests   
+
+[if you want to run as a jar] java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
 ....
 
-==== *2. Push the broker to PCF*
+==== *2. Create and bind the Security Group*
 
-Find out the database subnet and create a security group rule (postgresql.json):
+Find out the database subnet (for 10.68.45.151) and create a _security group rule_ (postgresql.json):
 ```
-[{"protocol":"tcp","destination":"10.10.8.0/24","ports":"5432"}]
+[{"protocol":"tcp","destination":"10.68.45.0/24","ports":"5432"}]
 ```
 
 import this into CF with:
@@ -63,7 +65,7 @@ cf bind-running-security-group postgresql-service
 ```
 
 
-Build the package with `mvn package` then push it out:
+==== *3. Push the broker to PCF*
 ```
 cf push postgresql-cf-service-broker -p target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar --no-start
 ```
@@ -74,20 +76,20 @@ Export the following environment variables:
 cf set-env postgresql-cf-service-broker JAVA_OPTS "-Dsecurity.user.password=mysecret"
 ```
 
-Start the service broker:
+Start the service broker app:
 ```
 cf start postgresql-cf-service-broker
 ```
 
 Create Cloud Foundry service broker:
 ```
-cf create-service-broker postgresql-cf-service-broker user mysecret http://[broker url] <-- must point to broker url bound via cf push above
+cf create-service-broker postgresql-cf-service-broker user mysecret http://postgresql-cf-service-broker.local.pcfdev.io <-- must point to broker url bound via cf push above
 ```
 
-==== *3. Enable the broker for the CF Marketplace*
+==== *4. Enable the broker for the CF Marketplace*
 Add service broker to Cloud Foundry Marketplace:
 ```
-cf enable-service-access PostgreSQL -p "Basic PostgreSQL Plan" -o ORG
+cf enable-service-access PostgreSQL -p "Basic PostgreSQL Plan" -o pcfdev-org
 ```
 
 
@@ -95,7 +97,64 @@ cf enable-service-access PostgreSQL -p "Basic PostgreSQL Plan" -o ORG
 
 
 
-==== *4. Test the broker with Spring-Music*
+==== *5. Test the broker with Spring-Music*
 
+-- As a Developer, I now need to create a service instance from the marketplace
 
-TBD
+```
+$ cf marketplace
+Getting services from marketplace in org pcfdev-org / space pcfdev-space as admin...
+OK
+
+service      plans                    description   
+"PostgreSQL   Basic PostgreSQL Plan*   PostgreSQL on shared instance. "  
+p-mysql      512mb, 1gb               MySQL databases on demand   
+p-rabbitmq   standard                 RabbitMQ is a robust and scalable high-performance multi-protocol messaging broker.   
+p-redis      shared-vm                Redis service to provide a key-value store   
+```
+
+-- This is the command to create an instance call "my-pg-svc"
+```
+$ cf create-service PostgreSQL "Basic PostgreSQL Plan"  my-pg-svc
+```
+
+-- Now let's push Spring-Music and bind to this service instance.
+
+```
+$ cd spring-music
+```
+
+```
+spring-music:$ ./gradlew assemble
+```
+
+```
+spring-music:$ cf push spring-music
+(output truncated)
+...
+requested state: started
+instances: 1/1
+usage: 512M x 1 instances
+"urls: spring-music-inventible-toothpaste.local.pcfdev.io"
+last uploaded: Sun Apr 24 14:32:26 UTC 2016
+stack: cflinuxfs2
+buildpack: java-buildpack=v3.6-offline-httpsgithub.com/cloudfoundry/java-buildpack.git#5194155 open-jdk-like-jre=1.8.0_71 open-jdk-like-memory-calculator=2.0.1_RELEASE spring-auto-reconfiguration=1.10.0_RELEASE tomcat-access-logging-support=2.5.0_RELEASE tomca...
+
+     state     since                    cpu    memory           disk           details   
+#0   running   2016-04-24 10:32:51 AM   0.0%   317.1M of 512M   154.7M of 1G      
+
+```
+--  Bind the spring-music app to our "my-pg-svc" instance.
+
+```
+$ cf bind-service spring-music my-pg-svc
+```
+
+-- Restage the app. Then browse to the app url and take a look at the *(i)* link (upper right of page) to confirm it is connected to postgres
+
+```
+$ cf restage spring-music
+```
+
+-- You should see the following in the browser:
+image::spring-music-with-postgres.jpg

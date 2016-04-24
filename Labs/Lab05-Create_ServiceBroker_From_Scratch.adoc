@@ -1,12 +1,100 @@
 = Lab05: Create a Spring-based Service Broker for Cloud Foundry From Scratch
 
-==== *Requirements*
- - download the spring-music application. git clone https.....
+==== *Download the starter example project*
+ - Download and unzip the source repository for the Spring Service Broker example project, or clone it using Git: 
+
+  git clone https://github.com/spring-cloud-samples/cloudfoundry-service-broker.git
+  
+  - This example is for MongoDB, but you can use it as a starting point for any service broker implementation.
+  - Review the source code for the following java classesd. (Note you can use Eclipse or IntelliJ or just a text editor)
+  
+ ----
+$ cd cloudfoundry-service-broker/
+
+cloudfoundry-service-broker mgunter$ ls
+README.md	gradle		gradlew.bat	mvnw		pom.xml
+build.gradle	gradlew		manifest.yml	mvnw.cmd	src
+
+----
+cloudfoundry-service-broker$ cd src/main/
+main$ tree
+├── java
+│   └── org
+│       └── springframework
+│           └── cloud
+│               └── servicebroker
+│                   └── mongodb
+│                       ├── Application.java
+│                       ├── config
+│                       │   ├── CatalogConfig.java
+│                       │   └── MongoConfig.java
+│                       ├── exception
+│                       │   └── MongoServiceException.java
+│                       ├── model
+│                       │   ├── ServiceInstance.java
+│                       │   └── ServiceInstanceBinding.java
+│                       ├── repository
+│                       │   ├── MongoServiceInstanceBindingRepository.java
+│                       │   └── MongoServiceInstanceRepository.java
+│                       └── service
+│                           ├── MongoAdminService.java
+│                           ├── MongoServiceInstanceBindingService.java
+│                           └── MongoServiceInstanceService.java
+└── resources
+    ├── application.yml
+    └── log4j.xml
+12 directories, 13 files
+----
+  
+  
  
-==== *Build the starter project*
+==== *Modify the starter project*
 
-==== *Implement the logic *
+-- change to the postgresql-cf-service-broker directory that is part of this workshop
 
-==== *Debug the Broker*
+----
+$ cd postgresql-cf-service-broker/
+postgresql-cf-service-broker$ ls
+LICENSE		README.md	manifest.yml	pom.xml		postgresql.json	src
+postgresql-cf-service-broker $ cd src/main/
+main $ tree
+.
+├── java
+│   └── org
+│       └── cloudfoundry
+│           └── community
+│               └── servicebroker
+│                   └── postgresql
+│                       ├── config
+│                       │   ├── Application.java
+│                       │   └── BrokerConfiguration.java
+│                       ├── model
+│                       │   └── ServiceInstance.java
+│                       ├── repository
+│                       │   └── PostgresServiceInstanceRepository.java
+│                       └── service
+│                           ├── DatabaseAdmin.java
+│                           ├── PostgreSQLDatabase.java
+│                           ├── PostgreSQLServiceInstanceBindingService.java
+│                           ├── PostgreSQLServiceInstanceService.java
+│                           ├── Role.java
+│                           └── Utils.java
+└── resources
+    └── application.properties
+
+11 directories, 11 files
+----
+
+==== *Implement the logic*
+-- Replace the mongodb directory with the postgresql directory
+
+-- Repace mongodb pom.xml with the one from the postgres project
+
+-- rm -r on src/test
+
+==== *Build the New Broker*
+
+-- mvn package -DskipTests 
+
 
 ==== *Follow Lab 4's Push instructions and Test the broker with Spring-Music*
