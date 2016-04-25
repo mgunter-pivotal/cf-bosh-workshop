@@ -1,5 +1,7 @@
 = Lab03: Creating a Bosh Release "from scratch"
 
+image::../images/lab_3_big_picture.png[]
+
 ==== *Requirements*
  - Install the "tree" utility "apt-get install tree" or "yum install tree -y"
  
