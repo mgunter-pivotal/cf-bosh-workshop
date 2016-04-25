@@ -2,14 +2,13 @@
 
 image::../images/lab_3_big_picture.png[]
 
-<pr>
-Some things to think about as you build your BOSH release:
-1.  It's useful to practice the manual steps needed to compile, install, and run the "Thing" (in this case Postgres) on an Ubuntu Linux VM.
-2.  What file system locations are important?  How can you specify non-default directory locations?
-3.  What additional OS dependencies are needed for running?  How can you automate the installation of those dependencies from BASH?
-4.  If your release will be comprised of a collection of VMs, what properties from each VM will need to be shared and how could you set those properties from variables in BASH script?
-5.  Do you need to do anything special to stop your service and how would you do that from the linux prompt?
-6.  Do I want to connect this Thing to an Enterprise monitoring and management solution once provisioned?  What needs to happen on the VM to make that happen?  What properties would need to be collected before deploying my BOSH deployment?
+==== *Some things to think about as you build your BOSH release:*
+ - 1.  It's useful to practice the manual steps needed to compile, install, and run the "Thing" (in this case Postgres) on an Ubuntu Linux VM.
+ - 2.  What file system locations are important?  How can you specify non-default directory locations?
+ - 3.  What additional OS dependencies are needed for running?  How can you automate the installation of those dependencies from BASH?
+ - 4.  If your release will be comprised of a collection of VMs, what properties from each VM will need to be shared and how could you set those properties from variables in BASH script?
+ - 5.  Do you need to do anything special to stop your service and how would you do that from the linux prompt?
+ - 6.  Do I want to connect this Thing to an Enterprise monitoring and management solution once provisioned?  What needs to happen on the VM to make that happen?  What properties would need to be collected before deploying my BOSH deployment?
 
 
 ==== *Requirements*
