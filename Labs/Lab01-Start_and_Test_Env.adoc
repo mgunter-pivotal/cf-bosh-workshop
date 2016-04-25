@@ -49,9 +49,11 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
 
 ==== 2. Testing your PCFDev environment
 
-  . Use Vagrant to start PCFDev VM
+. Download the latest pcfdev-<VERSION>.zip from the https://network.pivotal.io/[Pivotal Network].
+. cd to the /pcfdev directory
+. Use Vagrant to start PCFDev VM
   
-     run "$git clone https://github.com/pivotal-cf/pcfdev.git "
+     run "vagrant up "
     
           - In the terminal output: verify how Vagrant chose to port map host port 2200 (instead of 2222)
          
@@ -61,7 +63,7 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
             default: SSH username: vagrant
 
         
-        - cd into the /bosh-lite directory  run "$vagrant up" and test "$vagrant ssh"
+        - cd into the /pcfdev directory  run "$vagrant up" and test "$vagrant ssh"
         
     - Vagrant will then expose the guest ssh port on host machine @ 2223
     
