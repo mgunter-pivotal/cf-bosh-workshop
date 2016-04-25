@@ -11,16 +11,16 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
 
 
 === Requirements
-Download Vagrant from cmd line.
+Download Vagrant and Bosh CLI from cmd line.
 
 ----
 $ brew cask install vagrant
 
 ( virtual box is included in that)
 
-$ sudo gem install bosh-cli -more from readme-
+$ sudo gem install bosh_cli --no-ri --no-rdoc
 
-$git clone https://github.com/cloudfoundry/bosh-lite.git
+$ git clone https://github.com/cloudfoundry/bosh-lite.git
 
 ----
 
@@ -38,21 +38,17 @@ $git clone https://github.com/cloudfoundry/bosh-lite.git
  . Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
  
     - bosh user is admin, password is “admin"
-    
-     run "$bosh target 192.168.50.4"
-    
-     run "bosh login"
+
+----    
+$ bosh target 192.168.50.4 lite
+Target set to `Bosh Lite Director'
+Your username: admin
+Enter password: *****
+Logged in as `admin'
+----
+
      
-     - Use "$bin/add-route" command from /bosh-lite directory to add a static rout to containers via VM
     
-        - Note: this add-route file may _NOT BE CORRECT_ for the 10.68.45.0/24 network configured in the Postgres release deployment manifest link:https://github.com/mgunter-pivotal/cf-bosh-workshop/blob/master/bosh-postgres-release/complete/postgres-bosh-release/postgres.yml[here]
-        
-        -Here are the recommended "add-route" file settings for this workshop:
-    ----
-    old_ips="10.68.0.0/16"
-    ips="10.68.0.0/16"
-    gw="192.168.50.4"
-    ----
     
      check the status of bosh with "$bosh status"
     
@@ -62,7 +58,7 @@ $git clone https://github.com/cloudfoundry/bosh-lite.git
 
 . Download the latest pcfdev-<VERSION>.zip from the https://network.pivotal.io/[Pivotal Network].
 
-image::../pcfdev_download.png[]
+image::../images/pcfdev_download.png[]
 
 . unzip pcfdev
 . cd to the /pcfdev directory
