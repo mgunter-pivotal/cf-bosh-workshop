@@ -227,7 +227,7 @@ Create the file __config/final.yml__ and paste the following:
 
 ----
 ---
-final_name: cf-postgres
+final_name: my-postgres
 min_cli_version: 1.5.0.pre.1142
 blobstore:
   provider: local
