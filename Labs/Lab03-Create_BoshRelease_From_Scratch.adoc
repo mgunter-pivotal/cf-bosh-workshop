@@ -131,6 +131,7 @@ esac
 
 
 The instructor will discuss the contents of that file with you.
+Although not really used in this example, you can find out more on ruby ERB templating http://www.rrn.dk/rubys-erb-templating-system/[here]
 
 - Now edit the __monit__ script to look like
 
