@@ -2,6 +2,9 @@
 
 image::../images/lab_5_big_picture.png[]
 
+==== *Review Spring Cloud Service Broker*
+ - Located at https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker
+ 
 ==== *Download the starter example project*
  - Download and unzip the source repository for the Spring Service Broker example project, or clone it using Git: 
 
