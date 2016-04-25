@@ -36,9 +36,9 @@ $ git clone https://github.com/cloudfoundry/bosh-lite.git
 
         
  . Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
- 
+ +
     - bosh user is admin, password is “admin"
-
++
 ----    
 $ bosh target 192.168.50.4 lite
 Target set to `Bosh Lite Director'
@@ -46,13 +46,10 @@ Your username: admin
 Enter password: *****
 Logged in as `admin'
 ----
++
+. Check the status of bosh with "$bosh status"
 
-     
-    
-    
-     check the status of bosh with "$bosh status"
-    
-        image::bosh_status.jpg[]
+image::../images/bosh_status.png[]
 
 ==== 2. Testing your PCFDev environment
 
