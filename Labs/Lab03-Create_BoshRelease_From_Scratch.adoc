@@ -2,6 +2,15 @@
 
 image::../images/lab_3_big_picture.png[]
 
+==== *Some things to think about as you build your BOSH release:*
+ - 1.  It's useful to practice the manual steps needed to compile, install, and run the "Thing" (in this case Postgres) on an Ubuntu Linux VM.
+ - 2.  What file system locations are important?  How can you specify non-default directory locations?
+ - 3.  What additional OS dependencies are needed for running?  How can you automate the installation of those dependencies from BASH?
+ - 4.  If your release will be comprised of a collection of VMs, what properties from each VM will need to be shared and how could you set those properties from variables in BASH script?
+ - 5.  Do you need to do anything special to stop your service and how would you do that from the linux prompt?
+ - 6.  Do I want to connect this Thing to an Enterprise monitoring and management solution once provisioned?  What needs to happen on the VM to make that happen?  What properties would need to be collected before deploying my BOSH deployment?
+
+
 ==== *Requirements*
  - Install the "tree" utility "apt-get install tree" or "yum install tree -y"
  
@@ -131,6 +140,7 @@ case $1 in
 esac
 ----
 
+For discussion: There are several methods for implementing Postgresql HA.   See http://www.postgresql.org/docs/9.4/static/different-replication-solutions.html  What kinds of things would we need to do if we wanted to implement Transaction Log Shipping?  What other changes to pg_hba.conf would be needed upon first start?  How would settings differ if the job role is the standby server.  How could you inject DB settings such as max_wal_senders?
 
 The instructor will discuss the contents of that file with you.
 Although not really used in this example, you can find out more on ruby ERB templating http://www.rrn.dk/rubys-erb-templating-system/[here]
