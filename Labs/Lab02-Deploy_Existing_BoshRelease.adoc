@@ -340,9 +340,7 @@ image::../images/successful_deploy.png[]
 
 -- Use bin/add-route command from /bosh-lite to add a static rout to containers via VM
 
--- Note: this add-route file *may not be correct* for the 10.68.45.0/24 network configured in the Postgres release deployment manifest
-
--- https://raw.githubusercontent.com/mgunter-pivotal/cf-bosh-workshop/master/bosh-postgres-release/postgres.yml[here]
+-- Note: this add-route file *may not be correct* for the 10.68.45.0/24 network configured in the Postgres release deployment manifest https://raw.githubusercontent.com/mgunter-pivotal/cf-bosh-workshop/master/bosh-postgres-release/postgres.yml[here]
 
 -- Here are the recommended "add-route" file settings for this workshop:
 ----
