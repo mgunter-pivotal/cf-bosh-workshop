@@ -321,9 +321,8 @@ resource_pools:
 ( truncated output )
 
 At the end of the Deploy step the terminal should look like the screenshot below:
-image::../images/successful_deploy.png[]
-
 ----
+image::../images/successful_deploy.png[]
 
 ==== NOTES: some common things to look for:
 - can you bosh ssh into the postgres container?
