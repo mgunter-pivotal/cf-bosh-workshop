@@ -1,5 +1,7 @@
 = Lab02: Deploying an Existing Bosh Release
 
+image::../images/lab_2_big_picture.png[]
+
 ==== *Requirements*
 
 . __BOSH CLI__ installed
@@ -321,9 +323,8 @@ resource_pools:
 ( truncated output )
 
 At the end of the Deploy step the terminal should look like the screenshot below:
-image::successful_deploy.png
-
 ----
+image::../images/successful_deploy.png[]
 
 ==== NOTES: some common things to look for:
 - can you bosh ssh into the postgres container?

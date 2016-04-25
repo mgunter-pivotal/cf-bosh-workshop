@@ -1,7 +1,9 @@
 = Lab04: Deploying an Existing postgres Broker for Cloud Foundry
 
+image::../images/lab_4_big_picture.png[]
+
 == *Requirements*
- - download the spring-music application. git clone https.....
+ - Download the spring-music application. git clone https://github.com/scottfrederick/spring-music.git
  
 
 
@@ -33,6 +35,11 @@ Routes
 
 Simply run the JAR file and provide a PostgreSQL jdbc url via the `MASTER_JDBC_URL` environment variable.
 
+Commandline would be:
+----
+$ java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
+----
+
 == Lab Steps:
 
 ==== *1. Build the broker app*
@@ -43,8 +50,6 @@ Then you are ready to build with maven:
 
 ....
 mvn package -DskipTests   
-
-[if you want to run as a jar] java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
 ....
 
 ==== *2. Create and bind the Security Group*
@@ -157,6 +162,8 @@ $ cf restage spring-music
 ```
 
 -- You should see the following in the browser:
-image::spring-music-with-postgres.jpg
+
+image::../images/spring_music.png[]
+
 
 end of Lab

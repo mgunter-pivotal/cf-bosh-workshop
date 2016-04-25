@@ -1,4 +1,6 @@
-= Lab05: Create a Spring-based Service Broker for Cloud Foundry From Scratch
+= Lab05: Create a Spring-based Service Broker for Cloud Foundry "From Scratch"
+
+image::../images/lab_5_big_picture.png[]
 
 ==== *Download the starter example project*
  - Download and unzip the source repository for the Spring Service Broker example project, or clone it using Git: 
@@ -91,9 +93,9 @@ main $ tree
 
 -- Repace mongodb pom.xml with the one from the postgres project
 
--- rm -r on mongodb's src/test directory (we could have also copied the test classes from the postgres project)
+-- rm -r on the mongo broker's src/test directory (It is also possible to just copy the test classes from the postgres broker project.)
 
--- Make a trivial change to the broker code. One option is to change the name of the plan to Ultimate from Basic:
+-- Make a trivial change to the broker code. *One option is to change the name of the plan to Ultimate from Basic*:
 .. change *BrokerConfiguration.java* from
 
 ----
@@ -125,6 +127,7 @@ private static List<Plan> getPlans() {
 
 http://postgresql-cf-service-broker2.local.pcfdev.io/v2/catalog
 
+The browser should return a larger json payload with the following content embedded:
 ----
 "plans":[{"id":"postgresql-basic-plan","name":"Ultimate PostgreSQL Plan"
 ----

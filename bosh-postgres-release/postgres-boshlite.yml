@@ -1,9 +1,9 @@
 ---
 name: pg-01
-director_uuid: cf8dc1fc-9c42-4ffc-96f1-fbad983a6ce6
+director_uuid: 553a6e62-1b01-4e9a-9cdc-ae95a65e6ab4
 release:
   name: cf-postgres
-  version: latest
+  version: 0+dev.2
 
 compilation:
   workers: 1
@@ -144,7 +144,7 @@ resource_pools:
    network: gf1
    size: 2
    stemcell:
-    name: bosh-warden-boshlite-centos-go_agent
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
     version: latest
    cloud_properties:
     ram: 768
