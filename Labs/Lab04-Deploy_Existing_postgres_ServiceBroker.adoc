@@ -35,8 +35,9 @@ Routes
 
 Simply run the JAR file and provide a PostgreSQL jdbc url via the `MASTER_JDBC_URL` environment variable.
 
+Commandline would be:
 ----
-[if you want to run as a jar] java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
+$ java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
 ----
 
 == Lab Steps:
