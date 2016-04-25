@@ -10,14 +10,25 @@ Please see https://github.com/pivotal-cf/pcfdev.git for docs about Pcfdev.
 After the workshop - take a look at http://mariash.github.io/learn-bosh/#introduction which might be a good refresher down the road.
 
 
+=== Requirements
+Download Vagrant from cmd line.
+
+----
+$ brew cask install vagrant
+
+( virtual box is included in that)
+
+$ sudo gem install bosh-cli -more from readme-
+
+$git clone https://github.com/cloudfoundry/bosh-lite.git
+
+----
 
 ==== 1. Testing your Bosh-Lite environment
 
   . Use Vagrant to start bosh-lite VM
   
-   run "$git clone https://github.com/cloudfoundry/bosh-lite.git "
-    
-        cd into the /bosh-lite directory run "$vagrant up" and test "$vagrant ssh"
+     cd into the /bosh-lite directory run "$vagrant up" and test "$vagrant ssh"
         
      Vagrant exposes ssh port on host machine @ 2222
     
@@ -51,9 +62,9 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
 
 . Download the latest pcfdev-<VERSION>.zip from the https://network.pivotal.io/[Pivotal Network].
 . cd to the /pcfdev directory
-. Use Vagrant to start PCFDev VM
+. use the commands provided to start PcfDev
   
-     run "vagrant up "
+     run "$ start_osx "
     
           - In the terminal output: verify how Vagrant chose to port map host port 2200 (instead of 2222)
          
