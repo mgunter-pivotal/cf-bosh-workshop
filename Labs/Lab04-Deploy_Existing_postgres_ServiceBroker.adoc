@@ -162,6 +162,6 @@ $ cf restage spring-music
 ```
 
 -- You should see the following in the browser:
-image::spring-music-with-postgres.jpg
+image::../images/spring_music.png[]
 
 end of Lab
