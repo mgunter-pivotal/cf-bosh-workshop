@@ -12,7 +12,7 @@ image::../images/lab_3_big_picture.png[]
 
 
 ==== *Requirements*
- - Install the "tree" utility "apt-get install tree" or "yum install tree -y"
+ - Install the "tree" utility.  "$ brew install tree".
  
 ==== *1. Create a Postgres Bosh Release*
 Start from inside the *$WORKSHOP_HOME/* and let's configure and deploy the completed one:
