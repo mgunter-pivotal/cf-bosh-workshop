@@ -168,7 +168,7 @@ name: postgres
 director_uuid: 553a6e62-1b01-4e9a-9cdc-ae95a65e6ab4 
 release:
   name: cf-postgres
-  version: 0+dev.3
+  version: 0+dev.1
 
 compilation:
   workers: 2
@@ -282,12 +282,12 @@ Version: 389
 Acting as user 'admin' on 'Bosh Lite Director'
 
 Copying packages
-\----------------
+~----------------
 postgresql-server
 
 
 Copying jobs
-\------------
+~------------
 postgres-server
 
 Generated /var/folders/1w/xz6h_k810l7986wcll7xzfyr0000gp/T/d20160422-29852-o4ykud/d20160422-29852-1sv6amz/release.tgz
@@ -318,7 +318,7 @@ Getting deployment properties from director...
 Unable to get properties list from director, trying without it...
 
 Detecting deployment changes
-\----------------------------
+~----------------------------
 resource_pools:
 ( truncated output )
 
