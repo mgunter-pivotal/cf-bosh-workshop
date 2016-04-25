@@ -61,10 +61,16 @@ $git clone https://github.com/cloudfoundry/bosh-lite.git
 ==== 2. Testing your PCFDev environment
 
 . Download the latest pcfdev-<VERSION>.zip from the https://network.pivotal.io/[Pivotal Network].
+
+image::../pcfdev_download.png[]
+
+. unzip pcfdev
 . cd to the /pcfdev directory
 . use the commands provided to start PcfDev
   
-     run "$ start_osx "
+     run the start script for your os...
+     
+     "$ ./start_osx "
     
           - In the terminal output: verify how Vagrant chose to port map host port 2200 (instead of 2222)
          
