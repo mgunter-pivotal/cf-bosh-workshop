@@ -1,6 +1,6 @@
 # Cloud Foundry Service Broker for a PostgreSQL instance [![Build Status](https://travis-ci.org/cloudfoundry-community/postgresql-cf-service-broker.svg?branch=master)](https://travis-ci.org/cloudfoundry-community/postgresql-cf-service-broker)
 
-A Cloud Foundry Service Broker for a PostgreSQL instance built based on [s3-cf-service-broker](https://github.com/cloudfoundry-community/s3-cf-service-broker).
+A Cloud Foundry Service Broker for a PostgreSQL instance built based on [Spring Cloud Service Broker](https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker).
 
 The broker currently publishes a single service and plan for provisioning PostgreSQL databases.
 
@@ -17,7 +17,8 @@ Simply run the JAR file and provide a PostgreSQL jdbc url via the `MASTER_JDBC_U
 ### Locally
 
 ```
-mvn package && MASTER_JDBC_URL=jdbcurl java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
+edit application.properties so that JDBC points to your test instance of Postgres
+mvn package -DskipTests &&  java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
 ```
 
 ### In Cloud Foundry
@@ -46,7 +47,6 @@ cf push postgresql-cf-service-broker -p target/postgresql-cf-service-broker-2.4.
 Export the following environment variables:
 
 ```
-cf set-env postgresql-cf-service-broker MASTER_JDBC_URL "jdbcurl"
 cf set-env postgresql-cf-service-broker JAVA_OPTS "-Dsecurity.user.password=mysecret"
 ```
 
@@ -65,51 +65,17 @@ Add service broker to Cloud Foundry Marketplace:
 cf enable-service-access PostgreSQL -p "Basic PostgreSQL Plan" -o ORG
 ```
 
-## Testing
-
-### Locally
-
-You need to have a running PostgreSQL 9.x instance for this to work locally.
-To create an PostgreSQL database matching the ```MASTER_JDBC_URL``` in ```src/test/resources/application.properties```:
-```
-docker run  -p 5432:5432/tcp --name testpostgres --rm -e POSTGRES_DB=travis_ci_test -e  POSTGRES_PASSWORD= -e POSTGRES_USER=postgres postgres
-```
-
-Then run:
-```
-mvn test
-```
-
-### In Travis CI
-The configuration for the test can be found in ```src/test/resources/application.properties``` and should match the configuration in Travis CI (```.travis.yml```).
-
-## Using the services in your application
-
-### Format of Credentials
-
-The credentials provided in a bind call have the following format:
-
-```
-"credentials":{
-	"uri":"postgres://__username__:__password__@__hostname__:__port__/__database__"
-}
-```
-
-## Broker Security
-
-[spring-boot-starter-security](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-starters/spring-boot-starter-security) is used. See the documentation here for configuration: [Spring boot security](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-security)
-
-The default password configured is "password"
-
-## Creation of PostgreSQL databases
-
-A service provisioning call will create a PostgreSQL database. A binding call will return a database uri that can be used to connect to the database. Unbinding calls will disable the database user role and deprovisioning calls will delete all resources created.
-
-## User for Broker
-
-An PostgreSQL user must be created for the broker. The username and password must be provided using the environment variable `MASTER_JDBC_URL`.
-
 ## Registering a Broker with the Cloud Controller
 
 See [Managing Service Brokers](http://docs.cloudfoundry.org/services/managing-service-brokers.html).
+
+Routes
+======
+|Routes|Method|Description|
+|------|------|-----------|
+|/v2/catalog|GET|Service and its plan details by this broker|
+|/v2/service_instances/:id|PUT|create a dedicated database for this service|
+|/v2/service_instances/:id|DELETE|delete previously created database for this service|
+|/v2/service_instances/:id/service_bindings/:id|PUT|create user and grant privilege for the database associated with service.|
+|/v2/service_instances/:id/service_bindings/:id|DELETE|delete the user created previously for this binding.|
 

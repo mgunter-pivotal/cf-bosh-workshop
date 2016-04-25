@@ -1,5 +1,0 @@
-check process psql
-  with pidfile /var/vcap/jobs/postgres-server/data/postmaster.pid
-  start program "/var/vcap/jobs/postgres-server/bin/pgsql_ctl start" with timeout 600 seconds
-  stop program "/var/vcap/jobs/postgres-server/bin/pgsql_ctl stop"
-  group vcap

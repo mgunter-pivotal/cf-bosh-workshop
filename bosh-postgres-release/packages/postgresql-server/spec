@@ -1,0 +1,7 @@
+---
+name: postgresql-server
+
+dependencies:
+
+files:
+- postgresql-9.3.5.tar.gz  # from http://www.postgresql.org/ftp/source/v9.3.5/
