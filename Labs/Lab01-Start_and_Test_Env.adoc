@@ -62,7 +62,7 @@ $git clone https://github.com/cloudfoundry/bosh-lite.git
 
 . Download the latest pcfdev-<VERSION>.zip from the https://network.pivotal.io/[Pivotal Network].
 
-image::../pcfdev_download.png[]
+image::../images/pcfdev_download.png[]
 
 . unzip pcfdev
 . cd to the /pcfdev directory
