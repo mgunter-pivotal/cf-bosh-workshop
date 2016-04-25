@@ -1,5 +1,7 @@
 = Lab02: Deploying an Existing Bosh Release
 
+image::../images/lab_2_big_picture.png[]
+
 ==== *Requirements*
 
 . __BOSH CLI__ installed
