@@ -93,9 +93,9 @@ main $ tree
 
 -- Repace mongodb pom.xml with the one from the postgres project
 
--- rm -r on mongodb's src/test directory (we could have also copied the test classes from the postgres project)
+-- rm -r on the mongo broker's src/test directory (It is also possible to just copy the test classes from the postgres broker project.)
 
--- Make a trivial change to the broker code. One option is to change the name of the plan to Ultimate from Basic:
+-- Make a trivial change to the broker code. *One option is to change the name of the plan to Ultimate from Basic*:
 .. change *BrokerConfiguration.java* from
 
 ----
