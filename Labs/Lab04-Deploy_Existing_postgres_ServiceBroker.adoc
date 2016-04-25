@@ -3,7 +3,7 @@
 image::../images/lab_4_big_picture.png[]
 
 == *Requirements*
- - download the spring-music application. git clone https.....
+ - download the spring-music application. git clone https://github.com/scottfrederick/spring-music.git
  
 
 
