@@ -1,5 +1,7 @@
 = Lab04: Deploying an Existing postgres Broker for Cloud Foundry
 
+image::../images/lab_4_big_picture.png[]
+
 == *Requirements*
  - download the spring-music application. git clone https.....
  
