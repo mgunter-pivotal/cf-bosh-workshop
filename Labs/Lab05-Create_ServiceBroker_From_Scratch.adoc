@@ -1,4 +1,6 @@
-= Lab05: Create a Spring-based Service Broker for Cloud Foundry From Scratch
+= Lab05: Create a Spring-based Service Broker for Cloud Foundry "From Scratch"
+
+image::../images/lab_5_big_picture.png[]
 
 ==== *Download the starter example project*
  - Download and unzip the source repository for the Spring Service Broker example project, or clone it using Git: 
