@@ -369,6 +369,11 @@ jobs:
 
 ==== 3. Finally Deploy the release
 
+- Set Deployment for the dev release:
+
+*$ bosh deployment postgres.yml*
+
+
 - deploy the dev release:
 
 *$ bosh deploy*
