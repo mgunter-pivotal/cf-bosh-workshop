@@ -337,5 +337,10 @@ image::../images/successful_deploy.png[]
 
 - networking issue...did you edit and run bin/add-route?
 
-    
+----
+Use bin/add-route command from /bosh-lite to add a static rout to containers via VM
+
+Note: this file is not correct for the 10.68.45.0/24 network configured in the Postgres release deployment manifest here
+----
+
 end of Lab
