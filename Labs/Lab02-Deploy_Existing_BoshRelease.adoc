@@ -321,7 +321,7 @@ resource_pools:
 ( truncated output )
 
 At the end of the Deploy step the terminal should look like the screenshot below:
-image::successful_deploy.jpg
+image::successful_deploy.png
 
 ----
 
