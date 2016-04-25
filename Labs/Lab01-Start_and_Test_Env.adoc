@@ -4,7 +4,9 @@ image::../images/laptop_setup.png[]
 
 === Background
 Please see https://bosh.io/docs/bosh-lite.html for docs about BOSH Lite.
+
 Please see https://github.com/pivotal-cf/pcfdev.git for docs about Pcfdev.
+
 After the workshop - take a look at http://mariash.github.io/learn-bosh/#introduction which might be a good refresher down the road.
 
 
@@ -74,7 +76,7 @@ After the workshop - take a look at http://mariash.github.io/learn-bosh/#introdu
     
     .. To verify PCF commandline tool connected
     
-    $ cf target  
-
+    $ cf apps  
+ (Response should confirm no apps have been pushed.)
 
 end of Lab
