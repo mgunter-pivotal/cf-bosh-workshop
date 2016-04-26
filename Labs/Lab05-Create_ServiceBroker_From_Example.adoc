@@ -132,7 +132,7 @@ private static List<Plan> getPlans() {
 -- *You can also just test the REST api*
 
 -- example url for the rest api (user/mysecret). Look for "Ultimate" in the plan name.
- go to this REST endpoint: http://postgresql-cf-service-broker2.local.pcfdev.io/v2/catalog
+ Go to this REST endpoint: http://postgresql-cf-service-broker2.local.pcfdev.io/v2/catalog
 
 The browser should return a json payload with the following content embedded:
 ----
