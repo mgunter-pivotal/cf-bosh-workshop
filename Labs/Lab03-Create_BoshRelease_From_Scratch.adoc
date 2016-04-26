@@ -15,7 +15,7 @@ image::../images/lab_3_big_picture.png[]
  - Install the "tree" utility.  "$ brew install tree".
  
 ==== *1. Create a Postgres Bosh Release*
-Start from inside the *$WORKSHOP_HOME/* and let's configure and deploy the completed one:
+Start from inside the *$WORKSHOP_HOME/* and let's create a *New* one:
 
 *$ bosh init release my_postgres_release*
 
