@@ -54,7 +54,8 @@ mvn package -DskipTests
 
 ==== *2. Create and bind the Security Group*
 
-Find out the database subnet (for 10.68.45.151) and create a _security group rule_ (postgresql.json):
+To allow a connection from PCF to the Database (for 10.68.45.151)  a _security group rule_ must be created
+(postgresql.json file is included with the following json payload):
 ```
 [{"protocol":"tcp","destination":"10.68.45.0/24","ports":"5432"}]
 ```
