@@ -127,7 +127,9 @@ private static List<Plan> getPlans() {
 -- mvn package -DskipTests 
 
 
-==== *Follow Lab 4's Push instructions and Test the broker app with Spring Music. You can also just test the REST api*
+==== *Follow Lab 4's Push instructions and Test the broker app with Spring Music.* 
+
+-- *You can also just test the REST api*
 
 -- example url for the rest api (user/mysecret). Look for "Ultimate" in the plan name.
 
