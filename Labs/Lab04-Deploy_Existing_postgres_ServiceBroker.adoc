@@ -134,7 +134,7 @@ p-redis      shared-vm                Redis service to provide a key-value store
 $ cf create-service PostgreSQL "Basic PostgreSQL Plan"  my-pg-svc
 ```
 
--- Now let's push Spring-Music and bind to this service instance.
+-- Now let's *push* Spring-Music and bind to this service instance.
 
 ```
 $ cd spring-music
@@ -146,6 +146,7 @@ spring-music:$ ./gradlew assemble
 
 ```
 spring-music:$ cf push spring-music
+
 (output truncated)
 ...
 requested state: started
@@ -160,7 +161,7 @@ buildpack: java-buildpack=v3.6-offline-httpsgithub.com/cloudfoundry/java-buildpa
 #0   running   2016-04-24 10:32:51 AM   0.0%   317.1M of 512M   154.7M of 1G      
 
 ```
---  Bind the spring-music app to our "my-pg-svc" instance.
+--  After pushing, then *bind* the spring-music app to our "my-pg-svc" instance.
 
 ```
 $ cf bind-service spring-music my-pg-svc
