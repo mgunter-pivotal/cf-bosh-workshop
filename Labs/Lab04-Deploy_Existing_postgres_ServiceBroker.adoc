@@ -10,6 +10,9 @@ The broker currently publishes a single service and plan for provisioning Postgr
 image::../images/lab_4_big_picture.png[]
 
 == *Requirements*
+ - Download the maven.
+ 
+
  - Download the spring-music application. 
  
  ----
