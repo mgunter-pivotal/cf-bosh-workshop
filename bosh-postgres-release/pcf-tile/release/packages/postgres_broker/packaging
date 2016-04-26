@@ -1,0 +1,7 @@
+# abort script on any command that exit with a non zero value
+set -e
+
+cp -r templates ${BOSH_INSTALL_TARGET}
+
+cp postgres_broker/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar ${BOSH_INSTALL_TARGET}
+cp postgres_broker/manifest.yml ${BOSH_INSTALL_TARGET}

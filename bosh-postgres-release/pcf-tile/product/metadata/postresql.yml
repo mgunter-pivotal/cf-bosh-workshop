@@ -1,0 +1,240 @@
+---
+name: postresql
+label: Postgresql DB for Development
+description: Postgresql DB for Development
+icon_image: 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
+product_version: '0.0.3'
+metadata_version: '1.5'
+rank: 1
+serial: true
+
+releases:
+- file: postresql-0.0.3.tgz
+  name: postresql
+  version: '0.0.3'
+
+stemcell_criteria:
+  os: ubuntu-trusty
+  requires_cpi: false
+  version: '3146.5'
+
+property_blueprints:
+#
+# Parameters for the entire product
+#
+- name: org
+  type: string
+  configurable: true
+  default: postresql-org
+- name: org_quota
+  type: integer
+  configurable: true
+  constraints:
+    min: 512
+    max: 4096
+  default: 1024
+- name: space
+  type: string
+  configurable: true
+  default: postresql-space
+- name: apply_open_security_group
+  type: boolean
+  configurable: true
+  default: True
+- name: allow_paid_service_plans
+  type: boolean
+  configurable: true
+  default: False
+#
+# Standard properties for package postgres_broker
+#
+- name: postgres_broker_enable_global_access_to_plans
+  type: boolean
+  configurable: true
+  default: False
+#
+# Custom properties from the tile.yml file
+#
+- name: postgres_backup_location # Refer to this elsewhere as (( .properties.postgres_backup_location ))
+  type: string
+  default: my secure backup location
+  configurable: false
+
+form_types:
+#
+# Service access form
+#
+- name: service_access
+  label: Service Access
+  description: Determine availability of services
+  property_inputs:
+  - reference: .properties.postgres_broker_enable_global_access_to_plans
+    label: Enable global access to plans of service postgres_broker
+    description: "Enable global access to plans in the marketplace"
+
+job_types:
+#
+# Default compilation job
+#
+- name: compilation
+  resource_label: compilation
+  resource_definitions:
+   - name: ram
+     type: integer
+     configurable: true
+     default: 4096
+   - name: ephemeral_disk
+     type: integer
+     configurable: true
+     default: 10240
+   - name: persistent_disk
+     type: integer
+     configurable: true
+     default: 0
+   - name: cpu
+     type: integer
+     configurable: true
+     default: 2
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  instance_definitions:
+    - name: instances
+      type: integer
+      default: 1
+#
+# deploy-all job
+#
+- name: deploy-all
+  resource_label: deploy-all
+  errand: true
+  templates:
+  - name: deploy-all
+    release: postresql
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: false
+    default: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: false
+    default: 4096
+  - name: persistent_disk
+    type: integer
+    configurable: false
+    default: 0
+  - name: cpu
+    type: integer
+    configurable: false
+    default: 1
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  instance_definitions:
+  - name: instances
+    type: integer
+    configurable: false
+    default: 1
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    default:
+      identity: vcap
+  - name: app_credentials
+    type: salted_credentials
+  manifest: |
+    domain: (( ..cf.cloud_controller.system_domain.value ))
+    app_domains:
+    - (( ..cf.cloud_controller.apps_domain.value ))
+    org: (( .properties.org.value ))
+    space: (( .properties.space.value ))
+    ssl:
+      skip_cert_verify: (( ..cf.ha_proxy.skip_cert_verify.value ))
+    cf:
+      admin_user: (( ..cf.uaa.system_services_credentials.identity ))
+      admin_password: (( ..cf.uaa.system_services_credentials.password ))
+    org_quota: (( .properties.org_quota.value ))
+    apply_open_security_group: (( .properties.apply_open_security_group.value ))
+    allow_paid_service_plans: (( .properties.allow_paid_service_plans.value ))
+    security:
+      user: (( .deploy-all.app_credentials.identity ))
+      password: (( .deploy-all.app_credentials.password ))
+    postgres_backup_location: (( .properties.postgres_backup_location.value ))
+    postgres_broker:
+      name: postgres_broker
+      user: (( .deploy-all.app_credentials.identity ))
+      password: (( .deploy-all.app_credentials.password ))
+      enable_global_access_to_plans: (( .properties.postgres_broker_enable_global_access_to_plans.value ))
+#
+# delete-all job
+#
+- name: delete-all
+  resource_label: delete-all
+  errand: true
+  templates:
+  - name: delete-all
+    release: postresql
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: false
+    default: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: false
+    default: 4096
+  - name: persistent_disk
+    type: integer
+    configurable: false
+    default: 0
+  - name: cpu
+    type: integer
+    configurable: false
+    default: 1
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  instance_definitions:
+  - name: instances
+    type: integer
+    configurable: false
+    default: 1
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    default:
+      identity: vcap
+  - name: app_credentials
+    type: salted_credentials
+  manifest: |
+    domain: (( ..cf.cloud_controller.system_domain.value ))
+    app_domains:
+    - (( ..cf.cloud_controller.apps_domain.value ))
+    org: (( .properties.org.value ))
+    space: (( .properties.space.value ))
+    ssl:
+      skip_cert_verify: (( ..cf.ha_proxy.skip_cert_verify.value ))
+    cf:
+      admin_user: (( ..cf.uaa.system_services_credentials.identity ))
+      admin_password: (( ..cf.uaa.system_services_credentials.password ))
+
+post_deploy_errands:
+- name: deploy-all
+
+pre_delete_errands:
+- name: delete-all
+
+update:
+  canaries: 1
+  canary_watch_time: 10000-100000
+  max_in_flight: 1
+  update_watch_time: 10000-100000
+
+requires_product_versions:
+- name: cf
+  version: '~> 1.5'
+
+provides_product_versions:
+- name: postresql
+  version: '0.0.3'

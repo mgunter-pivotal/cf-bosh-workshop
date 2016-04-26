@@ -1,0 +1,13 @@
+---
+cf_cli/cf-linux-amd64.tgz:
+  object_id: 8849384c-1257-4281-af3b-6373e6ddda64
+  sha: c552c8f4436a63c2034d47f66fd218426c632112
+  size: 6153376
+postgres_broker/manifest.yml:
+  object_id: b43c37d4-83de-4eaf-ba0a-569acd7d27f1
+  sha: 00645988698669c538325b7927c7fb57f702072f
+  size: 71
+postgres_broker/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar:
+  object_id: 6a42dc40-5c94-445e-9ac8-754e092dd14e
+  sha: 244b1541c234a8b726ee484ebfcca853b690fbef
+  size: 51023395
