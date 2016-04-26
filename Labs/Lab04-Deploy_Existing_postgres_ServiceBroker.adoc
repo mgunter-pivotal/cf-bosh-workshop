@@ -1,17 +1,20 @@
 = Lab04: Deploying an Existing postgres Broker for Cloud Foundry
 
+== Configure and Deploy a Cloud Foundry Service Broker for a PostgreSQL instance 
+
+A Cloud Foundry Service Broker for a PostgreSQL instance built based on https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker[Spring Cloud Service Broker]
+
+The broker currently publishes a single service and plan for provisioning PostgreSQL databases via cloud foundry's *cf create-service* command
+
+
 image::../images/lab_4_big_picture.png[]
 
 == *Requirements*
- - Download the spring-music application. git clone https://github.com/scottfrederick/spring-music.git
+ - Download the spring-music application. 
  
-
-
-=== Cloud Foundry Service Broker for a PostgreSQL instance 
-
-A Cloud Foundry Service Broker for a PostgreSQL instance built based on [Spring Cloud Service Broker](https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker).
-
-The broker currently publishes a single service and plan for provisioning PostgreSQL databases.
+ ----
+ git clone https://github.com/scottfrederick/spring-music.git
+ ----
 
 === Design 
 
