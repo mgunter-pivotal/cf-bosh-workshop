@@ -54,8 +54,8 @@ mvn package -DskipTests
 
 ==== *2. Create and bind the Security Group*
 
-To allow a connection from PCF to the Database (for 10.68.45.151)  a _security group rule_ must be created
-(postgresql.json file is included with the following json payload):
+To allow a connection from PCF to the Database (for 10.68.45.151)  a _security group rule_ must be created.
+The file - postgresql.json - is included and contains the following default payload to use for this workshop.:
 ```
 [{"protocol":"tcp","destination":"10.68.45.0/24","ports":"5432"}]
 ```
