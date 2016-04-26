@@ -48,7 +48,7 @@ $ java -jar target/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
 
 ==== *1. Build the broker app*
 
-edit application.properties so that JDBC points to your test instance of Postgres.
+Review the application.properties so that the JDBC url and username and password are correct for your test instance of Postgres.
 
 image::../images/application_properties.png[]
 
