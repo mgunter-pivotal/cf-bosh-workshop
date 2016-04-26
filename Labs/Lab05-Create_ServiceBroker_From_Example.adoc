@@ -56,12 +56,13 @@ main$ tree
  
 ==== *Modify the starter project*
 
--- Copy from the "/main" directory of the postgresql-cf-service-broker project that is part of this workshop
+-- Due to time constraints, you will just copy source files from the "/main" directory of the *postgresql-cf-service-broker* project that is part of this workshop -Lab04. This will convert the Mongo Broker project into a Postgresql Broker.
+
+-- Open a few of the files and review the implementation. 
 
 ----
 $ cd postgresql-cf-service-broker/
-postgresql-cf-service-broker$ ls
-LICENSE		README.md	manifest.yml	pom.xml		postgresql.json	src
+
 postgresql-cf-service-broker $ cd src/main/
 main $ tree
 .
@@ -92,14 +93,16 @@ main $ tree
 ----
 
 ==== *Implement the logic*
--- Replace the mongodb "/main" directory with the postgresql "/main" directory
+-- As mentioned above -Replace the mongodb "/main" directory with the postgresql "/main" directory
 
 -- Repace mongodb pom.xml with the one from the postgres project
 
 -- rm -r on the mongo broker's src/test directory (It is also possible to just copy the test classes from the postgres broker project.)
 
 -- Make a trivial change to the broker code. *One option is to change the name of the plan to Ultimate from Basic*:
-.. change *BrokerConfiguration.java* from
+.. change *BrokerConfiguration.java* 
+
+..from
 
 ----
 private static List<Plan> getPlans() {
