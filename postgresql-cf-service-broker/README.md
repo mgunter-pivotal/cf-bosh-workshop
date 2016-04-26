@@ -12,7 +12,7 @@ Capability with the Cloud Foundry service broker API is indicated by the project
 
 ## Running
 
-Simply run the JAR file and provide a PostgreSQL jdbc url via the `MASTER_JDBC_URL` environment variable.
+Simply run the JAR file
 
 ### Locally
 
