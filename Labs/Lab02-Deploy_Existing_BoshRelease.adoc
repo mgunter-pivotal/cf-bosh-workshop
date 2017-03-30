@@ -336,10 +336,8 @@ image::../images/successful_deploy.png[]
 - did you change your version in postgres.yml?
 
 - networking issue...Access to the postgres server from the host requires a static route - did you *edit* and run bin/add-route?
-- (see note below)
+(see note below to add a static rout to containers via the VM)
 
-
--- Use bin/add-route command from /bosh-lite to add a static rout to containers via VM
 
 -- Note: this add-route file *may not be correct* for the 10.68.45.0/24 network configured in the Postgres release deployment manifest https://raw.githubusercontent.com/mgunter-pivotal/cf-bosh-workshop/master/bosh-postgres-release/postgres.yml[here]
 
