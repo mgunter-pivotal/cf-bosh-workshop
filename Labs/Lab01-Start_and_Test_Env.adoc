@@ -136,7 +136,7 @@ $ ./pcfdev-VERSION-osx
 . Start PCF Dev:
 +
 ----
-$ cf dev start -i 192.168.1.11
+$ cf dev start -i 192.168.11.11
 ----
 +
 It may take several minutes for the PCF Dev virtual machine (VM) and its services to start.
