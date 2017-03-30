@@ -7,6 +7,6 @@ $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/maste
 $ brew install git
 $ brew install cloudfoundry/tap/bosh-cli
 $ brew install cloudfoundry/tap/cf-cli
-
+$ brew cask install virtualbox
 
 
