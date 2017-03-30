@@ -143,7 +143,7 @@ esac
 For discussion: There are several methods for implementing Postgresql HA.   See http://www.postgresql.org/docs/9.4/static/different-replication-solutions.html  What kinds of things would we need to do if we wanted to implement Transaction Log Shipping?  What other changes to pg_hba.conf would be needed upon first start?  How would settings differ if the job role is the standby server.  How could you inject DB settings such as max_wal_senders?
 
 The instructor will discuss the contents of that file with you.
-Although not really used in this example, you can find out more on ruby ERB templating http://www.rrn.dk/rubys-erb-templating-system/[here]
+Although not really used in this example, you can find out more on ruby ERB templating http://www.stuartellis.name/articles/erb/[here]
 
 - Now edit the __monit__ script to look like
 
