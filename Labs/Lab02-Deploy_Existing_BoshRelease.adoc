@@ -335,7 +335,8 @@ image::../images/successful_deploy.png[]
 
 - did you change your version in postgres.yml?
 
-- networking issue...Access to the postgres server from the host requires a static route - did you edit and run bin/add-route?
+- networking issue...Access to the postgres server from the host requires a static route - did you *edit* and run bin/add-route?
+- (see note below)
 
 
 -- Use bin/add-route command from /bosh-lite to add a static rout to containers via VM
@@ -348,6 +349,20 @@ old_ips="10.68.0.0/16"
 ips="10.68.0.0/16"
 gw="192.168.50.4"
 ----
+----
+$ cat add-route
+#!/bin/bash
 
+set -x
+
+#old_ips="10.244.0.0/19"
+#ips="10.244.0.0/16"
+#gw="192.168.50.4"
+old_ips="10.68.0.0/16"
+ips="10.68.0.0/16"
+gw="192.168.50.4"
+
+.....
+----
 
 end of Lab
