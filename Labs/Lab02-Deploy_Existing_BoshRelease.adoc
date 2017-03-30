@@ -349,6 +349,7 @@ old_ips="10.68.0.0/16"
 ips="10.68.0.0/16"
 gw="192.168.50.4"
 ----
+.. After editing bosh-lite/bin/add-route, the file should look like this:
 ----
 $ cat add-route
 #!/bin/bash
