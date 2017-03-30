@@ -119,7 +119,7 @@ image::../images/pcfdev_download.png[]
 Install PCF Dev
 
 ---
-.. Download the latest version of PCF Dev from the Pivotal Network.
+. Download the latest version of PCF Dev from the Pivotal Network.
 Unzip the downloaded zip file:
 ---
 +
@@ -133,7 +133,7 @@ $ unzip pcfdev-VERSION-osx.zip
 $ ./pcfdev-VERSION-osx
 ----
 +
-.. Start PCF Dev:
+. Start PCF Dev:
 +
 ----
 $ cf dev start
@@ -170,7 +170,7 @@ Password: pass
 ----
     $ cf apps  
 ----
-+
+
 (Response should confirm no apps have been pushed.)
 
 end of Lab
