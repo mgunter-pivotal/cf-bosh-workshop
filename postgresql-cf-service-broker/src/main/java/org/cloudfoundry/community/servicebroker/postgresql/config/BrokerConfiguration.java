@@ -16,7 +16,7 @@
 package org.cloudfoundry.community.servicebroker.postgresql.config;
 
 import org.cloudfoundry.community.servicebroker.postgresql.model.ServiceInstance;
-import org.springframework.boot.orm.jpa.EntityScan;
+//import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.cloud.servicebroker.model.BrokerApiVersion;
 import org.springframework.cloud.servicebroker.model.Catalog;
 import org.springframework.cloud.servicebroker.model.Plan;
@@ -43,7 +43,7 @@ import java.util.Map;
 @Configuration
 @ComponentScan(basePackages = {"org.cloudfoundry.community.servicebroker.model.*","org.springframework.cloud.servicebroker.*","org.cloudfoundry.community.servicebroker.*"}, excludeFilters = { @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = BrokerApiVersion.class) })
 @EnableJpaRepositories(basePackages = {"org.cloudfoundry.community.servicebroker.postgresql.repository","org.cloudfoundry.community.servicebroker.model"})
-@EntityScan(basePackageClasses = ServiceInstance.class)
+//@EntityScan(basePackageClasses = ServiceInstance.class)
 public class BrokerConfiguration {
 
     private static final Logger logger = LoggerFactory.getLogger(BrokerConfiguration.class);
