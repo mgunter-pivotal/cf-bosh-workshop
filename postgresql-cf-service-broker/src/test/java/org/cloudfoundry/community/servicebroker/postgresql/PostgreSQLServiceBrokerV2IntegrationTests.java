@@ -15,7 +15,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -30,7 +30,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PostgreSQLServiceBrokerV2IntegrationTests extends ServiceBrokerV2IntegrationTestBase {
 
     @Value("${MASTER_JDBC_URL}")

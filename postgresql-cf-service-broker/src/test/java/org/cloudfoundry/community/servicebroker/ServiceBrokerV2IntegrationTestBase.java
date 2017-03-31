@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -35,7 +34,6 @@ import static com.jayway.restassured.RestAssured.given;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@IntegrationTest("server.port:0")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class ServiceBrokerV2IntegrationTestBase {
 
