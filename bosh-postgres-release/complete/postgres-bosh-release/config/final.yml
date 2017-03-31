@@ -1,7 +1,0 @@
----
-final_name: cf-postgres
-min_cli_version: 1.5.0.pre.1142
-blobstore:
-  provider: local
-  options:
-    blobstore_path: /tmp/postgres-blobs

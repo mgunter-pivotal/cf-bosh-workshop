@@ -1,0 +1,72 @@
+---
+name: postgres
+director_uuid: a4faa89f-9734-400f-807f-daddbaf3aac8
+release:
+  name: cf-postgres
+  version: 0+dev.2
+
+compilation:
+  workers: 2
+  cloud_properties:
+    ram: 8192
+    disk: 8096
+    cpu: 4
+  network: default
+  reuse_compilation_vms: true 
+
+update:
+  canaries: 1
+  canary_watch_time: 3000 - 180000
+  update_watch_time: 3000 - 180000
+  max_in_flight: 2
+  max_errors: 1
+
+networks:
+  - name: default
+    subnets:
+    - range: 192.168.0.0/24
+      gateway: 192.168.0.1
+      dns:
+      - 8.8.8.8
+      - 8.8.4.4
+      static:
+      - 192.168.0.76
+      - 192.168.0.77
+      - 192.168.0.78
+      - 192.168.0.79
+      - 192.168.0.80
+      reserved:
+      - 192.168.0.2-192.168.0.75
+      - 192.168.0.93-192.168.0.254
+      cloud_properties:
+        name: VM Network
+
+resource_pools:
+ - name: rp1
+   network: default
+   stemcell:
+    name: bosh-vsphere-esxi-ubuntu-trusty-go_agent
+    version: 3215
+   cloud_properties:
+    ram: 16500
+    disk: 4096
+    cpu: 2
+   env:
+    bosh:
+      password: c1oudc0w
+
+jobs:
+ - name: postgres-server
+   template: postgres-server
+   instances: 1
+   resource_pool: rp1
+   persistent_disk: 4096
+   properties:
+     host: 192.168.0.76
+   networks:
+   - name: default
+     static_ips:
+     - 192.168.0.76
+
+properties:
+     host: 192.168.0.76

@@ -1,0 +1,3 @@
+---
+memory: 512M
+path: postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar

@@ -1,0 +1,176 @@
+= Lab 1: Set up and Verify bosh-lite and pcfdev
+
+image::../images/laptop_setup.png[]
+
+=== Background
+Please see https://bosh.io/docs/bosh-lite.html for docs about BOSH Lite.
+
+Please see https://docs.pivotal.io/pcf-dev/index.html for docs about Pcfdev.
+
+After the workshop - take a look at http://mariash.github.io/learn-bosh/#introduction which might be a good refresher down the road.
+
+
+=== Requirements
+Download Vagrant and Bosh CLI from cmd line.
+
+----
+$ brew cask install vagrant
+
+( virtual box is included in that)
+
+$ sudo gem install bosh_cli --no-ri --no-rdoc
+
+$ git clone https://github.com/cloudfoundry/bosh-lite.git
+
+----
+
+==== 1. Testing your Bosh-Lite environment
+
+  . Use Vagrant to start bosh-lite VM
+  
+     cd into the /bosh-lite directory run "$vagrant up" and test "$vagrant ssh"
+        
+     Vagrant exposes ssh port on host machine @ 2222
+    
+        test "$vagrant ssh "
+
+        
+ . Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
+ +
+    - bosh user is admin, password is “admin"
++
+----    
+$ bosh target 192.168.50.4 lite
+Target set to `Bosh Lite Director'
+Your username: admin
+Enter password: *****
+Logged in as `admin'
+----
++
+. Check the status of bosh with "$bosh status"
+
+image::../images/bosh_status.png[]
+
+==== 2. Testing your PCFDev environment
+
+. Download the latest pcfdev-<VERSION>.zip from the https://network.pivotal.io/[Pivotal Network].
+
+image::../images/pcfdev_download.png[]
+
+= Lab 1: Set up and Verify bosh-lite and pcfdev
+
+image::../images/laptop_setup.png[]
+
+=== Background
+Please see https://bosh.io/docs/bosh-lite.html for docs about BOSH Lite.
+
+Please see https://github.com/pivotal-cf/pcfdev.git for docs about Pcfdev.
+
+After the workshop - take a look at http://mariash.github.io/learn-bosh/#introduction which might be a good refresher down the road.
+
+
+=== Requirements
+Download Vagrant and Bosh CLI from cmd line.
+
+----
+$ brew cask install vagrant
+
+( virtual box is included in that)
+
+$ sudo gem install bosh_cli --no-ri --no-rdoc
+
+$ git clone https://github.com/cloudfoundry/bosh-lite.git
+
+----
+
+==== 1. Testing your Bosh-Lite environment
+
+  . Use Vagrant to start bosh-lite VM
+  
+     cd into the /bosh-lite directory run "$vagrant up" and test "$vagrant ssh"
+        
+     Vagrant exposes ssh port on host machine @ 2222
+    
+        test "$vagrant ssh "
+
+        
+ . Bosh Lite director is running inside the Vagrant vm @ 192.168.50.4
+ +
+    - bosh user is admin, password is “admin"
++
+----    
+$ bosh target 192.168.50.4 lite
+Target set to `Bosh Lite Director'
+Your username: admin
+Enter password: *****
+Logged in as `admin'
+----
++
+. Check the status of bosh with "$bosh status"
+
+image::../images/bosh_status.png[]
+
+==== 2. Testing your PCFDev environment
+
+. Download the latest pcfdev-<VERSION>.zip from the https://network.pivotal.io/[Pivotal Network].
+
+image::../images/pcfdev_download.png[]
+
+Install PCF Dev
+
+---
+. Download the latest version of PCF Dev from the Pivotal Network.
+Unzip the downloaded zip file:
+---
++
+----
+$ unzip pcfdev-VERSION-osx.zip
+----
++
+.. Install the PCF Dev plugin:
++
+----
+$ ./pcfdev-VERSION-osx
+----
++
+. Start PCF Dev:
++
+----
+$ cf dev start -i 192.168.11.11
+----
++
+It may take several minutes for the PCF Dev virtual machine (VM) and its services to start.
+Note: You may be prompted to continue if your available memory is less than the recommended amount.
++
+If prompted, enter your API token. This token is required for authentication and appears at the bottom of the Edit Profile tab in your Pivotal Network account.
+Note: The API token does not appear in the terminal session when you enter it.
++
+After the PCF Dev is now running banner appears, you can log in.
+
+Stop PCF Dev
+
+. To temporarily stop PCF Dev, run the following command:
+----
+$ cf dev stop
+----
+        
+
+To login to Pcfdev via the CLI
+    
+. After launching your PCF Dev instance, use the cf login command with the -a flag to target its API:
++
+----
+$ cf login -a https://api.local.pcfdev.io --skip-ssl-validation
+Email: user
+Password: pass
+----
++
+. The terminal displays your API system domain when you run cf dev start. In most cases, your API system domain is api.local.pcfdev.io, but it may differ slightly depending on your host system configuration.
+
+----
+    $ cf apps  
+----
+
+(Response should confirm no apps have been pushed.)
+
+end of Lab

@@ -1,0 +1,30 @@
+---
+packages:
+- name: cf_cli
+  version: 7eddca1f9300b43870996072d4e6327cf7eec73b
+  fingerprint: 7eddca1f9300b43870996072d4e6327cf7eec73b
+  sha1: caab4a7d99c1dee9af9530c0641a611c3b844bc2
+  dependencies: []
+- name: common
+  version: d83e9d13dc21a50d19a829232582496637f02eca
+  fingerprint: d83e9d13dc21a50d19a829232582496637f02eca
+  sha1: 29282dd01b3e5f66b8899faff04f606e32feb42d
+  dependencies: []
+- name: postgres_broker
+  version: e6e63e2a2058ff9c99fc928f6186abfa37f1d9ee
+  fingerprint: e6e63e2a2058ff9c99fc928f6186abfa37f1d9ee
+  sha1: b7e8b362f9d7fd1e72cee3410796578f9c600323
+  dependencies: []
+jobs:
+- name: delete-all
+  version: d564c5872f9268a27b45340f7801ade882f639a9
+  fingerprint: d564c5872f9268a27b45340f7801ade882f639a9
+  sha1: 1a60a5c157612dcefb27a08bf0a23868bf87484d
+- name: deploy-all
+  version: d05a031837a94ed8f23fcb4666aa0c683235ec8c
+  fingerprint: d05a031837a94ed8f23fcb4666aa0c683235ec8c
+  sha1: 854e9e0944194ead76bb0b706016bf3c13be8e7b
+commit_hash: 647beb22
+uncommitted_changes: true
+name: postresql
+version: 0.0.3

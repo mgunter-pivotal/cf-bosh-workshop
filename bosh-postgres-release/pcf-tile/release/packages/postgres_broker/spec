@@ -1,0 +1,9 @@
+---
+name: postgres_broker
+
+dependencies: []
+
+files:
+- templates/all_open.json
+- postgres_broker/postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
+- postgres_broker/manifest.yml

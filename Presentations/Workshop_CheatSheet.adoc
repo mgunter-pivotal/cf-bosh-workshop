@@ -1,5 +1,5 @@
 
--- Lifecycle Commands for Bosh-Lite
+-- *Lifecycle Commands for Bosh-Lite*
 
 To start the Bosh-Lite vm, cd to "/bosh-lite"
 ----
@@ -18,7 +18,27 @@ To verify bosh commandline tool
 $ bosh status
 ----
 
-Configuration Commands
+- *Lifecycle Commands for pcfdev*
+
+To start the Pcfdev vm, cd to "/pcfdev"
+----
+$  vagrant up
+----
+To stop the Pcfdev vm, cd to "/pcfdev"
+----
+$ vagrant suspend
+----
+To login to Pcfdev via the CLI
+----
+$  cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
+----
+To verify PCF commandline tool connected
+----
+$ cf target
+----
+
+-- *Configuration Commands*
+
 To create a static route for accessing containers on the vm, cd to "/bosh-lite" (the network might need to be changed in the script)
 ----
 $  bin/add-route
@@ -28,6 +48,38 @@ To make a bosh release directory
 $ bosh init
 ----
 
-Troubleshooting Commands 
+-- *Commands & Credentials used to Login*
 
-Commands that require a password or key
+To login to the vagrant vm (must be in the directory that contains the Vagrantfile)
+----
+$  vagrant ssh <uses insecure key for credentials on vm>
+----
+To login to bosh director (use after bosh target)
+----
+$ bosh login  <admin/admin>
+----
+To login to a bosh vm (use after bosh login)
+----
+$ bosh ssh <you may need to sudo or sudo su - vcap for certain privileges.  vcap is the user during bosh automation tasks.>
+----
+To login to pcfdev
+----
+$ cf login -a api.local.pcfdev.io --skip-ssl-validation <admin/admin>
+----
+
+-- *Troubleshooting Commands* 
+
+To confirm bosh endpoint details
+----
+$ bosh status
+----
+To confirm the current deployment details, release details, vm details, task details
+----
+$ bosh deployments
+
+$ bosh releases
+
+$ bosh vms
+
+$ bosh tasks
+----

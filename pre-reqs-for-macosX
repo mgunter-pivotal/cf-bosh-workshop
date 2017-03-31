@@ -1,0 +1,12 @@
+Pre-Requisites:
+Chrome
+Terminal
+$ xcode-select --install
+$ cd /usr/local
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+$ brew install git
+$ brew install cloudfoundry/tap/bosh-cli
+$ brew install cloudfoundry/tap/cf-cli
+$ brew cask install virtualbox
+
+

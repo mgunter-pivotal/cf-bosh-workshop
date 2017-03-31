@@ -1,0 +1,18 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+tar zxvf postgresql-9.3.5.tar.gz
+pushd postgresql-9.3.5
+  # need to run as root?
+  # sudo su -
+  ./configure --prefix=${BOSH_INSTALL_TARGET}
+
+  make
+  make install
+popd
+
+# post-install procedures
+LD_LIBRARY_PATH=/usr/local/pgsql/lib
+export LD_LIBRARY_PATH
+
+
